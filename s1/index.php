@@ -34,15 +34,11 @@
 						1 </span>
 				</div>
 			</div>
-			<?php //include "./front/main.php";
-			?> <!-- main.php -->
 			<?php
-			switch ($_GET['do']) {
+			$do=$_GET['do']??'main';
+			switch ($do) {
 				case 'login':
 					include "./front/login.php";
-					break;
-				case 'main':
-					include "./front/main.php";
 					break;
 				case 'news':
 					include "./front/news.php";
