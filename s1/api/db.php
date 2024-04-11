@@ -135,6 +135,7 @@ function to($url)
     header("location:$url");
 }
 
+$Total = new DB('s1_total');
 $Title = new DB('s1_titles');
 
 ?>
