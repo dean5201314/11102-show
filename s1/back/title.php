@@ -32,7 +32,7 @@
                         <input type="checkbox" name="del[]" value="<?=$row['id'];?>">
                     </td>
                     <td>
-                    <input type="button" onclick="op('#cover','#cvr','./modal/update.php?table=<?=$do?>&id=<?=$row['id'];?>')" value="更新圖片">
+                    <input type="button" onclick="op('#cover','#cvr','./modal/upload.php?table=<?=$do?>&id=<?=$row['id'];?>')" value="更新圖片">
                     </td>
                 </tr>
                 <?php
