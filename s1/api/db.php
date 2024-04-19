@@ -138,5 +138,7 @@ function to($url)
 $Total = new DB('s1_total');
 $Bottom = new DB('s1_bottom');
 $Title = new DB('s1_titles');
+$Ad = new DB('s1_ad');
+
 
 ?>
