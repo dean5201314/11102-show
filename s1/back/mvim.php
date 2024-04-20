@@ -17,8 +17,9 @@
                 <tr>
                     <td>
                         <img src="./img/<?=$row['img'];?>" 
-                        style="width:150px;height:120px">
+                        style="width:120px;height:90px">
                     </td>
+                    <input type="hidden" name="id[]" value="<?=$row['id'];?>" >
                     <td>
                         <input type="checkbox" name="sh[]" value="<?=$row['id'];?>" 
                         <?=($row['sh']==1)?'checked':'';?>>
