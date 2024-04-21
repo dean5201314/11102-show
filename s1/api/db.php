@@ -140,6 +140,7 @@ $Bottom = new DB('s1_bottom');
 $Title = new DB('s1_titles');
 $Ad = new DB('s1_ad');
 $Mvim = new DB('s1_mvim');
+$Image = new DB('s1_image');
 
 
 ?>
