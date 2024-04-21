@@ -12,7 +12,9 @@
                     <td></td>
                 </tr>
                 <?php
-                $rows=$Title->all();
+                // 將$DB定義在db.php中，須注意事後$DB被覆蓋是否影響程式流程即可
+                // $DB=${ucfirst($do)};
+                $rows=$DB->all();
                 foreach ($rows as $row) {                    
                 ?>
                 <tr>

@@ -141,6 +141,11 @@ $Title = new DB('s1_titles');
 $Ad = new DB('s1_ad');
 $Mvim = new DB('s1_mvim');
 $Image = new DB('s1_image');
+$News = new DB('s1_news');
 
-
+// 將$DB定義在db.php中，須注意事後$DB被覆蓋是否影響程式流程即可
+if (isset($_GET['do'])) {
+    // 若存在$_GET['do']才設定，避免程式出錯
+    $DB=${ucfirst($_GET['do'])};
+}
 ?>
