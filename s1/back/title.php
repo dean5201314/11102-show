@@ -21,8 +21,10 @@
                         style="width:300px;height:30px">
                     </td>
                     <td width="23%">
+                        <!-- 在text名稱欄位矩陣key值存入id，傳id給api的edit.php -->
                         <input type="text" name="text[<?=$row['id'];?>]" 
                         style="width:90%" value="<?=$row['text'];?>">
+                        <!-- 另外，可以用input:hidden隱藏欄位存入id，傳id給api的edit.php -->
                     </td>
                     <td width="7%">
                         <input type="radio" name="sh" value="<?=$row['id'];?>" 
