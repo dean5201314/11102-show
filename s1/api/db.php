@@ -147,5 +147,7 @@ $News = new DB('s1_news');
 if (isset($_GET['do'])) {
     // 若存在$_GET['do']才設定，避免程式出錯
     $DB=${ucfirst($_GET['do'])};
+} else {
+    $DB=$Title;
 }
 ?>
