@@ -11,9 +11,14 @@
                     <td></td>
                 </tr>
                 <?php
+                $total=$DB->count();    //資料的總筆數
+                $div=3;     //每頁顯示的資料筆數
+                $pages=ceil($total/$div);   //總頁數
+                $now=$_GET['p']??1;     //若未收到頁數，起始頁數預設為1
+                $start=($now-1)*$div;   //起始頁的起始資料
                 // 將$DB定義在db.php中，須注意事後$DB被覆蓋是否影響程式流程即可
                 // $DB=${ucfirst($do)};
-                $rows=$DB->all();
+                $rows=$DB->all(" limit $start,$div");
                 foreach ($rows as $row) {                    
                 ?>
                 <tr>
@@ -39,6 +44,24 @@
                 ?>
             </tbody>
         </table>
+        <div class="cent">
+            <?php
+            if ($now>1) {
+                $prev=$now-1;
+                echo "<a href='?do=$do&p=$prev'>  <  </a>"; 
+                // echo "<a href='?do=news&p=$prev'>  &lt;  </a>";  可以用 &lt; 代替 <
+            }
+            for ($i=1; $i <= $pages ; $i++) {
+                $fontsize=($now==$i)?'24px':'16px';
+                echo "<a href='?do=$do&p=$i' style='font-size:$fontsize'>  $i  </a>";         
+            }
+            if ($now<$pages) {
+                $next=$now+1;
+                echo "<a href='?do=$do&p=$next'>  >  </a>"; 
+                // echo "<a href='?do=news&p=$next'>  &gt;  </a>";  可以用 &gt; 代替 >
+            }
+            ?>
+        </div>
         <table style="margin-top:40px; width:70%;">
             <tbody>
                 <tr>
