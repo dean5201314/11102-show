@@ -18,8 +18,7 @@
                 ?>
                 <tr>
                     <td>
-                        <img src="./img/<?=$row['img'];?>" 
-                        style="width:120px;height:90px">
+                        <img src="./img/<?=$row['img'];?>" style="width:120px;height:90px">
                     </td>
                     <!-- 使用input:hidden隱藏欄位存入id，傳id給api的edit.php -->
                     <input type="hidden" name="id[]" value="<?=$row['id'];?>" >

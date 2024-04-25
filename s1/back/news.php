@@ -23,8 +23,9 @@
                 <tr>
                     <td>
                         <!-- textarea的開始與結束標籤中間只能是資料，不可有空白或斷行符號，否則會被寫入資料庫中 -->
-                        <textarea type="text" name="text[<?=$row['id'];?>]" 
-                        style="width:90%;height:60px"><?=$row['text'];?></textarea>
+                        <textarea type="text" name="text[]" style="width:90%;height:60px"><?=$row['text'];?></textarea>
+                        <!-- 用input:hidden隱藏欄位存入id，傳id給api的edit.php -->
+                        <input type="hidden" name="id[]" value="<?=$row['id'];?>">
                     </td>
                     <td>
                         <input type="checkbox" name="sh[]" value="<?=$row['id'];?>" 
