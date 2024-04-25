@@ -142,6 +142,7 @@ $Ad = new DB('s1_ad');
 $Mvim = new DB('s1_mvim');
 $Image = new DB('s1_image');
 $News = new DB('s1_news');
+$Admin = new DB('s1_admin');
 
 // 將$DB定義在db.php中，須注意事後$DB被覆蓋是否影響程式流程即可
 if (isset($_GET['do'])) {
