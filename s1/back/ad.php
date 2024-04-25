@@ -17,8 +17,10 @@
                 ?>
                 <tr>
                     <td>
-                        <input type="text" name="text[<?=$row['id'];?>]" 
-                        style="width:90%" value="<?=$row['text'];?>">
+                        <!-- 原先在text名稱欄位矩陣key值存入id，後來配合多資料表改用隱藏欄位傳id -->
+                        <input type="text" name="text[]" style="width:90%" value="<?=$row['text'];?>">
+                        <!-- 用input:hidden隱藏欄位存入id，傳id給api的edit.php -->
+                        <input type="hidden" name="id[]" value="<?=$row['id'];?>">
                     </td>
                     <td>
                         <input type="checkbox" name="sh[]" value="<?=$row['id'];?>" 
