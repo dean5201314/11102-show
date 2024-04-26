@@ -34,6 +34,7 @@
                         <input type="checkbox" name="del[]" value="<?=$row['id'];?>">
                     </td>
                     <td>
+                        <!-- 以AJAX方式單獨呼叫submenu.php，用傳入table、id等GET變數，開彈出視窗執行編輯次選單程式 -->
                         <input type="button" value="編輯次選單" 
                         onclick="op('#cover','#cvr','./modal/submenu.php?table=<?=$do?>&id=<?=$row['id'];?>')">
                     </td>
