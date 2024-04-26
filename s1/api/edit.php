@@ -27,9 +27,10 @@ foreach ($_POST['id'] as $key => $id) {
         if (isset($row['text'])) {
             // 原先$text從foreach中取得，才需做下述處理
             // $row['text']=$text;
-            // 改用$_POST['id']做foreach，需變更為下述處理
+            // 改用$_POST['id']做foreach後，需將資料表內容更新為表單輸入的內容
             $row['text']=$_POST['text'][$key];
         }
+        // 改用$_POST['id']做foreach後，需將資料表內容更新為表單輸入的內容
         switch ($table) {
             case 'title':                                
                 $row['sh']=(isset($_POST['sh']) && $_POST['sh']==$id)?1:0;
@@ -38,7 +39,9 @@ foreach ($_POST['id'] as $key => $id) {
                 $row['acc']=$_POST['acc'][$key];
                 $row['pw']=$_POST['pw'][$key];
             break;
-            case 'menu':                                
+            case 'menu':
+                $row['href']=$_POST['href'][$key];
+                $row['sh']=(isset($_POST['sh']) && in_array($id,$_POST['sh']))?1:0;
             break;            
             default:
                 $row['sh']=(isset($_POST['sh']) && in_array($id,$_POST['sh']))?1:0;
