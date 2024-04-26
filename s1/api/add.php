@@ -13,7 +13,7 @@ if (isset($_FILES['img']['tmp_name'])) {
     move_uploaded_file($_FILES['img']['tmp_name'],"../img/".$_FILES['img']['name']);
     $_POST['img']=$_FILES['img']['name'];
 }
-// 若非admin呼叫，則設定顯示欄位sh中的預設值(只有admin資料表沒有sh欄位)
+// 非admin呼叫時，判斷除網站標題title外，預設sh欄位為1顯示(因admin資料表沒有sh欄位)
 if ($table != 'admin') {
     $_POST['sh']=($table=='title')?0:1;
 }
