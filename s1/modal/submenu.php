@@ -21,16 +21,14 @@
             <td><input type="checkbox" name="del[]" value="<?=$sub['id'];?>"></td>
             <input type="hidden" name="id[]" value="<?=$sub['id'];?>">
         </tr>
-        <tr>
-            <td><input type="text" name="add_text[]" id=""></td>
-            <td><input type="text" name="add_href[]" id=""></td>
-        </tr>
         <?php   
         }
         ?>
     </table>
     <div>
+        <!-- 將主選單傳來的table、id，用隱藏欄位由form轉傳給api的submenu.php，進行資料表的新增或修改 -->
         <input type="hidden" name="table" value="<?= $_GET['table']; ?>">
+        <input type="hidden" name="menu_id" value="<?= $_GET['id']; ?>">
         <input type="submit" value="修改確定">
         <input type="reset" value="重置">
         <input type="button" value="更多次選單" onclick="more()">

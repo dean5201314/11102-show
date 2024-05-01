@@ -14,8 +14,8 @@
                 </tr>
                 <?php
                 // 將$DB定義在db.php中，須注意事後$DB被覆蓋是否影響程式流程即可
-                // $DB=${ucfirst($do)};
-                $rows=$DB->all();
+                // $DB=${ucfirst($do)};另外，只有主選單(['menu_id'=>0])的資料，才讀出來
+                $rows=$DB->all(['menu_id'=>0]);
                 foreach ($rows as $row) {                    
                 ?>
                 <tr>
