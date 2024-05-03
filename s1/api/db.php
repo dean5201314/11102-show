@@ -145,12 +145,23 @@ $News = new DB('s1_news');
 $Admin = new DB('s1_admin');
 $Menu = new DB('s1_menu');
 
+/* 安全定義$DB三種方法：
+1.用陣列預定義$DB值域篩選 
+2.用get_defined_vars()的陣列key值篩選 
+3.用${ucfirst($_GET['do'])}有否定義判斷 
+*/
+/* 
 // 取出已定義變數的陣列key值，存入$lists$tKey中
 $lists=array_keys(get_defined_vars());
 // dd($lists);
-
+*/
 // 將$DB定義在db.php中，須注意事後$DB被覆蓋是否影響程式流程即可
 if (isset($_GET['do'])) {
+    // 判斷$_GET['do']變數內容首字大寫後的變數名稱是否存在?若存在則設定$DB變數
+    if (isset(${ucfirst($_GET['do'])})) {
+        $DB=${ucfirst($_GET['do'])};
+    }
+    /*
     // 若$_GET['do']變數存在，則變數內容首字大寫後存入$tKey
     $tKey=ucfirst($_GET['do']);
     // 若首字大寫後的$tKey存在於已定義變數的陣列key值$lists之中，則設定$DB變數
@@ -158,6 +169,7 @@ if (isset($_GET['do'])) {
         $DB=$$tKey;
     }
     // 注意避免$tKey$lists與$tKey，在後續程式中被變更內容或重新定義
+    */
 } else {
     // 否則，將$DB變數設定為預設值$Title
     $DB=$Title;
