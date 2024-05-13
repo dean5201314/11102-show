@@ -3,38 +3,7 @@
     <?php include "marquee.php";?>
     <div style="height:32px; display:block;"></div>
     <!--正中央-->
-    <script>
-        var lin = new Array();
-        <?php
-        // 從資料表讀取出所有要顯示的動畫檔名'img'
-        $lins=$Mvim->all(['sh'=>1]);
-        $linarr=[];
-        // 從資料集dataset變數$lins中，逐一取出資料列datarow，放入資料列變數$lin
-        foreach ($lins as $lin) {
-            // 將檔名欄位'img'的值，前後加上單引號(字串化)，放入$linarr[]陣列中
-            $linarr[]="'".$lin['img']."'";            
-        }
-        // 將$linarr[]陣列中元素，用，連接起來，放入字串變數$linstr中
-        $linstr=join(",",$linarr);
-        ?>
-        // 將字串變數$linstr內容放入空陣列lin中，組成完整的陣列宣告語法
-        lin=[<?=$linstr;?>];
-        var now = 0;
-        if (lin.length > 1) {
-            // 3000c毫秒後，每隔3000c毫秒，執行ww()函數一次
-            setInterval("ww()", 3000);
-            now = 1;
-        }
-
-        // 宣告ww()函數內容
-        function ww() {
-            $("#mwww").html("<embed loop=true src='./img/" + lin[now] + "' style='width:99%; height:100%;'></embed>")
-            //$("#mwww").attr("src",lin[now])
-            now++;
-            if (now >= lin.length)
-                now = 0;
-        }
-    </script>
+    <!-- 將動畫的HTML區塊遷移到java script之前，這樣在執行java script時，才有可以執行的對象 -->
     <div style="width:100%; padding:2px; height:290px;">
         <div id="mwww" loop="true" style="width:100%; height:100%;">
             <div style="width:99%; height:100%; position:relative;" class="cent">
@@ -42,6 +11,62 @@
             </div>
         </div>
     </div>
+
+    <script>
+        var lin = new Array();
+        <?php
+        /* 將動畫檔名存入陣列的三種彈性化的方法：
+        1.只將動畫檔名存為陣列個別元素
+        2.將動畫檔名與陣列格式儲存為完整陣列
+        3.用push函數儲存為完整陣列 
+        */
+        // 從資料表讀取出所有要顯示的動畫檔名'img'        
+        $lins=$Mvim->all(['sh'=>1]);
+        // 方法1 & 方法2：宣告$linarr[]空陣列
+        // $linarr=[];
+        // 從資料集dataset變數$lins中，逐一取出資料列datarow，放入資料列變數$lin
+        foreach ($lins as $lin) {
+            // 方法1：將檔名欄位'img'的值，前後加上單引號(字串化)，放入$linarr[]陣列中
+            // $linarr[]="'".$lin['img']."'";
+            // 方法2：將檔名欄位'img'的值，放入$linarr[]陣列中
+            // $linarr[]=$lin['img'];
+            echo "lin.push('{$lin['img']}');";
+        }
+
+        // 方法1：將$linarr[]陣列中元素，用，連接起來，放入字串變數$linstr中
+        // $linstr=join(",",$linarr);
+        // 方法2：將$linarr陣列中元素(純檔名)，用join轉成字串變數，加上陣列格式轉存為完整陣列
+        // $linstr="['".join("','",$linarr)."']";
+        ?>
+
+        // 方法1：將字串變數$linstr內容放入空陣列lin中，組成完整的陣列宣告語法
+        /* lin=[<?php //echo $linstr;?>]; */
+        // 方法2：將字串變數加上陣列格式的完整陣列，存入js的lin變數
+        // lin=<?php //echo $linstr;?>;
+
+        var now = 0;
+        ww();
+        // 若動畫檔名陣列中有元素(長度>1)，則定時呼叫ww()函數顯示動畫
+        if (lin.length > 1) {
+            // 3000c毫秒後，每隔3000c毫秒，執行ww()函數一次
+            setInterval("ww()", 3000);
+            // 設定顯示動畫的陣列指標為1
+            now = 1;
+        }
+
+        // 宣告ww()函數內容
+        function ww() {
+            // 將顯示動畫的指令崁入HTML指令中
+            $("#mwww").html("<embed loop=true src='./img/" + lin[now] + "' style='width:99%; height:100%;'></embed>")
+            //$("#mwww").attr("src",lin[now])
+            // 將顯示動畫的陣列指標加1
+            now++;
+            // 若顯示動畫的陣列指標超過動畫檔名陣列長度
+            if (now >= lin.length)
+                // 將顯示動畫的陣列指標歸零
+                now = 0;
+        }
+    </script>
     <div style="width:95%; padding:2px; height:190px; margin-top:10px; padding:5px 10px 5px 10px; border:#0C3 dashed 3px; position:relative;">
         <span class="t botli">最新消息區
         </span>
