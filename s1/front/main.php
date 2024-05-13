@@ -70,6 +70,12 @@
     </script>
     <div style="width:95%; padding:2px; height:190px; margin-top:10px; padding:5px 10px 5px 10px; border:#0C3 dashed 3px; position:relative;">
         <span class="t botli">最新消息區
+            <?php
+            // 若所有要顯示的最新消息超過5筆，則顯示More...的超連結
+            if ($News->count(['sh'=>1])>5) {
+                echo "<a href='?do=news' style='float: right;'>More...</a>";
+            }
+            ?>
         </span>
         <ul class="ssaa" style="list-style-type:decimal;">
 
@@ -77,18 +83,29 @@
         // 從資料表讀取出所有要顯示的最新消息        
         $news=$News->all(['sh'=>1],' limit 5');
         foreach ($news as $n) {
+            // 在ul標籤下放入li標籤內的html內容
             echo "<li>";
-            echo mb_substr($n['text'],0,20);
+            // 只取出每筆資料的前20個字(用mb_substr函數處理雙字元的字串資料)
+            echo mb_substr($n['text'],0,20);            
+            // 在li標籤下放入class為all的子容器div區塊內的最新消息全部內容
+            echo "<div class='all' style='display:none'>";
+            echo $n['text'];                
+            echo "</div>";
             echo "...</li>";
         }
 
         ?>
 
         </ul>
-        <div id="altt" style="position: absolute; width: 350px; min-height: 100px; background-color: rgb(255, 255, 204); top: 50px; left: 130px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;"></div>
+        <div id="altt" style="position: absolute; width: 350px; min-height: 100px; background-color: rgb(255, 255, 204); top: 50px; left: 130px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;">
+
+        </div>
         <script>
             $(".ssaa li").hover(
                 function() {
+                    // 此處的$(this)，是指hover時，滑鼠滑過的元件(被hover的容器)，children(".all")指class=all的子容器，
+                    // html()指取出子容器內的所有html內容
+                    // 以下是將被hover的元件下class為all的子容器內所有html()內容，前後加pre標籤後，放回#altt標簽下html()的位置
                     $("#altt").html("<pre>" + $(this).children(".all").html() + "</pre>")
                     $("#altt").show()
                 }
