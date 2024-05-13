@@ -59,6 +59,7 @@
             // 將顯示動畫的指令崁入HTML指令中
             $("#mwww").html("<embed loop=true src='./img/" + lin[now] + "' style='width:99%; height:100%;'></embed>")
             //$("#mwww").attr("src",lin[now])
+
             // 將顯示動畫的陣列指標加1
             now++;
             // 若顯示動畫的陣列指標超過動畫檔名陣列長度
@@ -71,6 +72,18 @@
         <span class="t botli">最新消息區
         </span>
         <ul class="ssaa" style="list-style-type:decimal;">
+
+        <?php
+        // 從資料表讀取出所有要顯示的最新消息        
+        $news=$News->all(['sh'=>1],' limit 5');
+        foreach ($news as $n) {
+            echo "<li>";
+            echo mb_substr($n['text'],0,20);
+            echo "...</li>";
+        }
+
+        ?>
+
         </ul>
         <div id="altt" style="position: absolute; width: 350px; min-height: 100px; background-color: rgb(255, 255, 204); top: 50px; left: 130px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;"></div>
         <script>
