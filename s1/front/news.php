@@ -15,6 +15,7 @@
 	// 依分頁參數的要求，從資料表讀取出所有要顯示的最新消息        
 	$news = $News->all(['sh' => 1], "  limit $start,$div");
 	?>
+	<!-- 此處會用到$start變數，所以php程式碼要移到上面，HTML才會讀得到$start變數 -->
 	<ol start='<?= $start + 1; ?>'>
 		<?php
 		foreach ($news as $n) {

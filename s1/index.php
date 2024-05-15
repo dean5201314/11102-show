@@ -81,10 +81,23 @@
 				<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo(&#39;?do=login&#39;)">管理登入</button>
 				<div style="width:89%; height:480px;" class="dbor">
 					<span class="t botli">校園映象區</span>
+					<?php
+					// 從資料表讀取出所有要顯示的校園映象圖片資料
+					$imgs=$Image->all(['sh'=>1]);
+					foreach ($imgs as $idx => $img) {
+					?>
+						<!-- 產生要顯示的HTML區塊(含id & class)與圖片 -->
+						<div id="ssaa<?=$idx;?>" class="im">
+							<img src="./img/<?=$img['img'];?>" style="width:150px; height: 100px;">
+						</div>						
+					<?php
+					}
+					?>
+					
 					<script>
 						var nowpage = 0,
 							num = 0;
-
+						// 判斷式中，邏輯運算子前後宜留一格空白，數學運算式最好加括號區分邏輯運算子邊界
 						function pp(x) {
 							var s, t;
 							if (x == 1 && nowpage - 1 >= 0) {
