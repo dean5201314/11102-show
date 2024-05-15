@@ -81,33 +81,40 @@
 				<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo(&#39;?do=login&#39;)">管理登入</button>
 				<div style="width:89%; height:480px;" class="dbor">
 					<span class="t botli">校園映象區</span>
+					<div class="cent" onclick="pp(1)"><img src="./icon/up.jpg" alt=""></div>
 					<?php
 					// 從資料表讀取出所有要顯示的校園映象圖片資料
 					$imgs=$Image->all(['sh'=>1]);
 					foreach ($imgs as $idx => $img) {
 					?>
-						<!-- 產生要顯示的HTML區塊(含id & class)與圖片 -->
-						<div id="ssaa<?=$idx;?>" class="im">
-							<img src="./img/<?=$img['img'];?>" style="width:150px; height: 100px;">
+						<!-- 產生要顯示的HTML區塊(含id & class)與圖片，因js上一頁會減一(nowpage--)，故ssaa的id由0開始(避免最後一頁只剩2張圖) -->
+						<div id="ssaa<?=$idx;?>" class="im cent">
+							<img src="./img/<?=$img['img'];?>" style="width:150px; height: 100px;border: 3px solid orange;margin: 3px;">
 						</div>						
 					<?php
 					}
 					?>
-					
+					<div class="cent" onclick="pp(2)"><img src="./icon/dn.jpg" alt=""></div>
 					<script>
-						var nowpage = 0,
-							num = 0;
+						// num表要顯示的圖片總數，須由0改成從資料表讀出count數 $Image->count(['sh'=>1]);				
+						// var nowpage = 0,num = 0;
+						var nowpage = 0,num = <?=$Image->count(['sh'=>1]);?>;
+						// 因為php會吃掉程式後面的內容，最好留空白行或加;結束符號，比較安全
+
 						// 判斷式中，邏輯運算子前後宜留一格空白，數學運算式最好加括號區分邏輯運算子邊界
 						function pp(x) {
 							var s, t;
-							if (x == 1 && nowpage - 1 >= 0) {
+							if (x == 1 && (nowpage - 1) >= 0) {
 								nowpage--;
 							}
-							if (x == 2 && (nowpage + 1) * 3 <= num * 1 + 3) {
+							// if (x == 2 && (nowpage + 1) * 3 <= num * 1 + 3) {
+							// 原始碼為上一行，邏輯有錯，要改成下一行程式碼
+							if (x == 2 && (nowpage + 1) <= (num * 1 - 3)) {
 								nowpage++;
 							}
 							$(".im").hide()
 							for (s = 0; s <= 2; s++) {
+								// s * 1是為解決早期js資料型態問題，透過數學運算強迫s & t資料型態保持為數字
 								t = s * 1 + nowpage * 1;
 								$("#ssaa" + t).show()
 							}
