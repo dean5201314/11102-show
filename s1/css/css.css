@@ -75,26 +75,37 @@ body
 	line-height:30px;
 	padding:2px 10px 2px 10px;
 	margin:7px 1px 7px 1px;
+	height: 32px;	/* 限制主選單高度，不要包住次選單而破壞畫面 */
 }
 .mainmu:hover
 {
 	background:url(../icon/menu2.fw.png) center no-repeat;
 	background-size:cover;
+	z-index: 8;	/* hover時調高主選單層級，避免觸發其他主選單mouseout事件，使次選單消失 */
 }
 .mainmu2
 {
 	position:relative;
 	border-radius:10px;
+	/* border: 3px solid white; */	/* 改用自建div區塊(用白色邊框代替次選單之間的間隔，讓畫面美觀) */
 	background:url(../icon/menu3.fw.png)center no-repeat;
 	background-size:100% 100%;
 	line-height:30px;
 	padding:2px 10px 2px 10px;
-	margin:7px 1px 7px 1px;
+	margin:7px 1px 7px 1px;	/* 改用自建div區塊(取消次選單之間的間隔，避免觸發mouseout事件，使次選單消失) */
+	z-index: 9;	/* 調高次選單層級在主選單之上，完整顯示次選單 */
 }
 .mainmu2:hover
 {
 	background:url(../icon/menu4.fw.png) center no-repeat;
 	background-size:cover;
+}
+.mw	/* 自建div區塊用於框住次選單，避免觸發mouseout事件，使次選單消失 */
+{
+	position:relative;
+	left: 100px;	/* 將次選單位置向右移動，避免遮蓋到主選單文字 */
+	display: none;	/* 次選單預設為不顯示 */
+	top: -20px;	/* 讓次選單進入主選單範圍內，避免觸發主選單mouseout事件，使次選單消失 */
 }
 #lf
 {
@@ -159,11 +170,11 @@ input:focus,button:focus
 	cursor:pointer;
 	text-decoration:none;
 }
-/* 針對/front/news.php分頁增加的a標籤底線的css設定 */
+/* 針對/front/news.php分頁增加的預設a標籤無底線的css設定 */
 a{
 	text-decoration: none;
 }
-
+/* 針對/front/news.php分頁增加的a標籤hover時有底線的css設定 */
 a:hover{
 	text-decoration: underline;
 }
