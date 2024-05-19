@@ -174,4 +174,12 @@ if (isset($_GET['do'])) {
     // 否則，將$DB變數設定為預設值$Title
     $DB=$Title;
 }
+
+// 利用session變數完成檢定要求，重整畫面不增加進站人數，僅瀏覽器關閉重開，才會累計進站人數
+if (!isset($_SESSION['visited'])) {
+    // 使用q方法直接下sql指令更新資料(因一個循環只使用一次故不另外寫函數或方法)
+    $Total->q("update `s1_total` set `total` = `total` + 1 where `id`=1");
+    // 若為循環中第一次連線，則設定session變數'visited'=1，瀏覽器未關閉前又再連線，不累計進站人數
+    $_SESSION['visited']=1;
+}
 ?>
