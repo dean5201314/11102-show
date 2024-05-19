@@ -1,4 +1,9 @@
 <?php
+if (isset($_SESSION['login'])) {
+	// 因為login.php是被include到index.php，所以to(location)時，要以index.php位置找back.php
+	to("./back.php");
+}
+
 if (isset($_GET['error'])) {
 	/* 因alert是js語法，不能由php直接用，需用echo方式顯示於網頁上，
 	alert括號內須為字串(前後加上引號)，否則部會觸發alert的彈出視窗*/

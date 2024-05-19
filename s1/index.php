@@ -104,7 +104,22 @@
 			</script> -->
 			<div class="di di ad" style="height:540px; width:23%; padding:0px; margin-left:22px; float:left; ">
 				<!--右邊-->
-				<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo(&#39;?do=login&#39;)">管理登入</button>
+				<?php
+				// 依登入狀態，決定使用者回後台或登入頁面
+				if (isset($_SESSION['login'])) {
+				?>
+				<!-- 若已登入，顯示"返回管理"按鍵，可直接回後台 -->
+				<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo(&#39;back.php&#39;)">
+				返回管理</button>
+				<?php
+				} else {
+				?>
+				<!-- 若尚未登入，顯示"管理登入"按鍵，只能到登入頁面 -->
+				<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;" onclick="lo(&#39;?do=login&#39;)">
+				管理登入</button>
+				<?php
+				}
+				?>
 				<div style="width:89%; height:480px;" class="dbor">
 					<span class="t botli">校園映象區</span>
 					<div class="cent" onclick="pp(1)"><img src="./icon/up.jpg" alt=""></div>
