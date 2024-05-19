@@ -81,7 +81,13 @@
 					<tbody>
 						<tr>
 							<td style="width:70%;font-weight:800; border:#333 1px solid; border-radius:3px;" class="cent"><a href="?do=admin" style="color:#000; text-decoration:none;">後台管理區</a></td>
-							<td><button onclick="document.cookie='user=';location.replace('?')" style="width:99%; margin-right:2px; height:50px;">管理登出</button></td>
+							<td>
+								<!-- 原登出是用前端清除cookie並重整畫面(與cookie相關程式會重新判斷執行)，此處改用到api在後端清session方式登出 -->
+								<!-- <button onclick="document.cookie='user=';location.replace('?')" style="width:99%; margin-right:2px; height:50px;"> -->
+								<button onclick="location.href='./api/logout.php'" style="width:99%; margin-right:2px; height:50px;">
+								管理登出
+								</button>
+							</td>
 						</tr>
 					</tbody>
 				</table>
