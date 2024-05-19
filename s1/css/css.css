@@ -75,7 +75,7 @@ body
 	line-height:30px;
 	padding:2px 10px 2px 10px;
 	margin:7px 1px 7px 1px;
-	height: 32px;	/* 限制主選單高度，不要包住次選單而破壞畫面 */
+	height: 29px;	/* 限制主選單高度，不要包住次選單而破壞畫面 */
 }
 .mainmu:hover
 {
