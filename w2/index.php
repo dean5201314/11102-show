@@ -31,17 +31,10 @@
         <br>
 
         <?php
-        echo "1 x 1 = 1 , ";
-        echo "1 x 2 = 2 , ";
-        echo "1 x 3 = 3 , ";
+        for($i = 1 ; $i <= 9 ; $i++){
+            echo "1 x " . $i . " = " . (1*$i) . " ,&nbsp;&nbsp;&nbsp;";
+        }
         echo "<br>";
-        echo "2 x 1 = 2 , ";
-        echo "2 x 2 = 4 , ";
-        echo "2 x 3 = 6 , ";
-        echo "<br>";
-        echo "9 x 1 = 2 , ";
-        echo "9 x 2 = 18 , ";
-        echo "9 x 3 = 27 , ";
         ?>
 
     </div>
