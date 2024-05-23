@@ -65,6 +65,22 @@
         <?php
         // 在程式開頭插入表格起始標籤<table>
         echo "<table>";
+        // 在第一列開頭插入標頭列的起始標籤<tr>
+        echo "<tr>";
+        // 在標頭列插入每個欄位的正確資料內容
+        echo "<td></td>";
+        echo "<td>1</td>";
+        echo "<td>2</td>";
+        echo "<td>3</td>";
+        echo "<td>4</td>";
+        echo "<td>5</td>";
+        echo "<td>6</td>";
+        echo "<td>7</td>";
+        echo "<td>8</td>";
+        echo "<td>9</td>";
+        echo "";
+        // 在第一列結尾插入標頭列的結束標籤<tr>
+        echo "</tr>";
         for ($j = 1; $j <= 9; $j++) {
             // 在每列開頭插入表格列的起始標籤<tr>
             echo "<tr>";
@@ -78,7 +94,7 @@
                 // 在每欄開頭插入表格欄的起始標籤<td>
                 echo "<td>";
                 // 在每個欄位插入正確的資料內容
-                echo $j . " x " . $i . " = " . ($j * $i);
+                echo ($j * $i);
                 // 在每欄結尾插入表格欄的結束標籤</td>
                 echo "</td>";
             }
