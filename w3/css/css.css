@@ -1,0 +1,177 @@
+* {
+    margin: 0;
+}
+
+body {
+    background-image: url('../img/bg-calendar-4.jpg');
+}
+
+.top {
+    width: 1024px;
+    height: 65px;
+    background-color: lightgreen;
+    margin: auto;
+    border: 1px solid black;
+    border-bottom: 0;
+    text-align: center;
+    padding-top: 2px;
+    color: red;
+    font-size: 36px;
+    font-weight: bolder;
+}
+.bg-contaier{
+    width: 100%;
+    height: 100vh;
+    background-size:cover;            
+}
+
+.container {
+    display: flex;
+    /* flex-direction: column; */
+    flex-wrap: wrap; 
+    width: 1024px;
+    /* height: 768px; */
+    margin: auto;
+    /* background-color: lightcyan; */
+    background-image: url('../img/bg-calendar-3.jpg');
+}
+
+.aside {
+    width: 215px;
+    height: calc(768px - 65px - 20px);
+    /* background-color: bisque; */
+    border: 1px solid black;
+    border-right: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: '標楷體';
+    background-image: url("../img/bg-calendar-5.jpg");
+}
+
+.query {
+    /* width: 215px; */
+    height: calc(100% - 25px);
+    /* background-color: blueviolet; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.update {
+    height: 25px;
+    /* font-size: 16px; */
+    color: #0000FF;
+    font-family: '標楷體';
+    text-align: center;
+    background-color: lightblue;
+}
+
+.main {
+    /* width: calc(1024px - 215px); */
+    /* height: calc(768px - 65px - 20px); */
+    background-color: lightgreen;
+    border: 1px solid black;
+    /* margin: auto; */
+}
+
+.marquee {
+    /* width: 215px; */
+    height: 29px;
+    font-size: 24px;
+    color: #0000FF;
+    font-family: '標楷體';
+    background-color: lightblue;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+}
+
+
+button {
+    border: none;
+    border-radius: 50%;
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+    background-color: lightslategrey;
+    color: white;
+    font-size: 20px;
+}
+
+button>a {
+    text-decoration: none;
+    color: white;
+}
+
+table {
+    border-radius: 10px;
+    border-collapse: collapse;
+    border: 3px double #999;
+    margin: auto;
+}
+
+.header {
+    background-color: lightcyan;
+}
+
+tr,
+td {
+    width: 90px;
+    height: 90px;
+    border: 1px solid black;
+    background-color: white;
+    font-size: 24px;
+}
+
+td {
+    border: 1px solid #999;
+    padding: 5px 10px;
+    text-align: center;
+}
+
+td:hover {
+    border: 1px solid red;
+    color: red;
+    border-radius: 50px;
+}
+
+.weekend {
+    background-color: lightcoral;
+}
+
+.workday {
+    background: white;
+}
+
+.today {
+    background: lightblue;
+}
+
+footer {
+    width: 100%;
+    padding: 5px;
+    color: #000000;
+    font-size: 20px;
+    border: 1px solid black;
+    text-align: center;
+    background-color: cornsilk;
+}
+
+input
+{
+    width: 120px;
+    height: 30px;
+	border:#999 1px solid;
+	border-radius:1px;
+	background:#EFEFEF;
+	padding:2px;
+	margin:3px;
+}
+
+form{
+    font-weight: 24px;    
+}

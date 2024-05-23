@@ -17,6 +17,9 @@ if (!isset($_SESSION['login'])) {
 </head>
 
 <body>
+    <button class="root" style='border-radius: 50%;margin:10px;background-color:greenyellow;font-size:20px;padding:20px;'>
+        <a href="../index.html" style='color:brown'>Root</a>
+    </button>
 	<div id="cover" style="display:none; ">
 		<div id="coverr">
 			<a style="position:absolute; right:3px; top:4px; cursor:pointer; z-index:9999;" onclick="cl(&#39;#cover&#39;)">X</a>
