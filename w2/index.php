@@ -66,7 +66,7 @@
         // 在程式開頭插入表格起始標籤<table>
         echo "<table>";
         // 在第一列開頭插入標頭列的起始標籤<tr>
-        echo "<tr>";
+        echo "<tr style='background-color:#ccc'>";
         // 在標頭列插入每個欄位的正確資料內容
         echo "<td></td>";
         echo "<td>1</td>";
@@ -85,7 +85,7 @@
             // 在每列開頭插入表格列的起始標籤<tr>
             echo "<tr>";
             // 在每列開頭插入標頭欄的起始標籤<td>
-            echo "<td>";
+            echo "<td style='background-color:#ccc'>";
             // 在每列開頭插入標頭欄的正確資料內容
             echo $j;
             // 在每列開頭插入標頭欄的結束標籤<td>
