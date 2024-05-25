@@ -10,7 +10,7 @@
 
 <body>
     <button class="root" style='margin-left:10px; background-color:greenyellow;'>
-        <a href="../index.html" style='color:brown'>Root</a>
+        <a href="../index.html" style='color:brown'>回目錄</a>
     </button>
     <?php
     //  設定時區

@@ -26,12 +26,22 @@
             border: 1px solid black;
             padding: 3px 9px;
         }
+
+        /* 預設a標籤無底線的css設定 */
+        a {
+            text-decoration: none;
+        }
+
+        /* a標籤hover時有底線的css設定 */
+        a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 
 <body>
     <button class="root" style='border-radius: 50%;margin:10px;background-color:greenyellow;font-size:20px;padding:20px;'>
-        <a href="../index.html" style='color:brown'>Root</a>
+        <a href="../index.html" style='color:brown;'>回目錄</a>
     </button>
     <div class="container">
         <br>
@@ -62,7 +72,53 @@
         <hr>
         <h1>九九乘法表-有標頭</h1>
         <br>
+
+        <!-- 方法二：在標頭列與標頭欄的標籤與資料用判斷式寫入程式 -->
         <?php
+        // 在程式開頭插入表格起始標籤<table>
+        echo "<table>";
+        // 在標頭列插入每個欄位的正確資料內容
+        // 在第一列結尾插入標頭列的結束標籤<tr>
+        echo "</tr>";
+        for ($j = 0; $j < 10; $j++) {
+            if ($j==0) {
+                // 在標頭列起始標籤顯示灰底
+                echo "<tr style='background-color:#ccc'>";
+            } else {
+                // 非標頭列起始標籤無底色<tr>
+                echo "<tr>";
+            } 
+            for ($i = 0; $i < 10; $i++) {
+                if ($i==0) {
+                    // 在標頭欄起始標籤顯示灰底
+                    echo "<td style='background-color:#ccc'>";
+                } else {
+                    // 非標頭欄起始標籤無底色<tr>
+                    echo "<td>";
+                }
+                if ($j==0) {
+                    // 在標頭列資料顯示橫坐標的值
+                    echo $i;
+                } else if ($i==0) {
+                            // 在標頭欄資料顯示縱坐標的值
+                            echo $j;
+                        } else {
+                            // 非標頭列/標頭欄的資料顯示 橫坐標x縱坐標 的值
+                            echo $j*$i;
+                        }
+                // 在每欄結尾插入結束標籤</td>
+                echo "</td>";
+            }
+            // 在每列結尾插入結束標籤</tr>
+            echo "</tr>";
+        }
+        // 在表格結尾插入結束標籤</table>
+        echo "</table>";
+        ?>
+          
+         <!-- 方法一：在標頭列與標頭欄將標籤與資料寫死在程式中 -->
+        <?php
+        /*
         // 在程式開頭插入表格起始標籤<table>
         echo "<table>";
         // 在第一列開頭插入標頭列的起始標籤<tr>
@@ -103,6 +159,7 @@
         }
         // 在程式結尾插入表格結束標籤</table>
         echo "</table>";
+        */
         ?>
 
         <!-- 模擬用表格相關標籤，將程式執行的內容框起來，做成表格樣式
