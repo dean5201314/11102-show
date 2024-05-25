@@ -81,7 +81,7 @@
         for ($j = 0; $j < 10; $j++) {
             if ($j==0) {
                 // 在標頭列起始標籤顯示灰底
-                echo "<tr style='background-color:#ccc'>";
+                echo "<tr style='background:#ccc'>";
             } else {
                 // 非標頭列起始標籤無底色<tr>
                 echo "<tr>";
@@ -89,12 +89,12 @@
             for ($i = 0; $i < 10; $i++) {
                 if ($i==0) {
                     // 在標頭欄起始標籤顯示灰底
-                    echo "<td style='background-color:#ccc'>";
+                    echo "<td style='background:#ccc'>";
                 } else {
                     // 非標頭欄起始標籤無底色<tr>
                     echo "<td>";
                 }
-                
+
                 if ($j == 0 && $i == 0) {
                     // 在標頭列的標頭欄處不顯示資料
                     echo "";
@@ -117,7 +117,62 @@
         // 在表格結尾插入結束標籤</table>
         echo "</table>";
         ?>
+
+        <br>
+        <br>
+        <hr>
+        <h1>九九乘法表-留左下區</h1>
+        <br>
+
+        <?php
+        // 在程式開頭插入表格起始標籤<table>
+        echo "<table>";
+        // 在標頭列插入每個欄位的正確資料內容
+        for ($j = 0; $j < 10; $j++) {
+            if ($j==0) {
+                // 在標頭列起始標籤顯示灰底
+                echo "<tr style='background:#ccc'>";
+            } else {
+                // 非標頭列起始標籤無底色<tr>
+                echo "<tr>";
+            } 
+            for ($i = 0; $i < 10; $i++) {
+                if ($i==0) {
+                    // 在標頭欄起始標籤顯示灰底
+                    echo "<td style='background:#ccc'>";
+                } else {
+                    // 非標頭欄起始標籤無底色<tr>
+                    echo "<td>";
+                }
+
+                if ($j == 0 && $i == 0) {
+                    // 在標頭列的標頭欄處不顯示資料
+                    echo "";
+                } else if ($j == 0) {
+                    // 在標頭列資料顯示橫坐標的值
+                    echo $i;
+                } else if ($i == 0) {
+                    // 在標頭欄資料顯示縱坐標的值
+                    echo $j;
+                } else if ($i > $j) {
+                    // 在資料欄的右上區不顯示資料
+                    echo "";
+                } else {
+                    // 非標頭列且非標頭欄處的資料顯示為 橫坐標x縱坐標 的值
+                    echo $j * $i;
+                    
+                }
+                // 在每欄結尾插入結束標籤</td>
+                echo "</td>";
+            }
+            // 在每列結尾插入結束標籤</tr>
+            echo "</tr>";
+        }
+        // 在表格結尾插入結束標籤</table>
+        echo "</table>";
+        ?>
           
+
          <!-- 方法一：在標頭列與標頭欄將標籤與資料寫死在程式中 -->
         <?php
         /*
@@ -267,6 +322,7 @@
             </tr>
         </table>
  -->
+
 
     </div>
 </body>
