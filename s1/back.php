@@ -18,7 +18,7 @@ if (!isset($_SESSION['login'])) {
 
 <body>
     <button class="root" style='border-radius: 50%;margin:10px;background-color:greenyellow;font-size:20px;padding:20px;'>
-        <a href="../index.html" style='color:brown'>Root</a>
+        <a href="../index.html" style='color:brown'>回目錄</a>
     </button>
 	<div id="cover" style="display:none; ">
 		<div id="coverr">

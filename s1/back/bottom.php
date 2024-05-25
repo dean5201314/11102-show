@@ -2,12 +2,12 @@
     <p class="t cent botli">頁尾版權資料管理</p>
     <!-- 因為被include到back.php，所以action要以back.php位置找edit_bottom.php  -->
     <form method="post" action="./api/edit_info.php">
-        <table style="width:50%; margin:auto;">
+        <table style="width:80%; margin:auto;">
             <tbody>
                 <tr class="yel">
                     <td width="50%">頁尾版權資料</td>
-                    <td width="50%">
-                        <input type="text" name="bottom" value="<?=$Bottom->find(1)['bottom'];?>">
+                    <td width="90%">
+                        <input type="text" name="bottom" value="<?=$Bottom->find(1)['bottom'];?>" style='width:250px'>
                         <input type="hidden" name="table" value="<?=$do;?>">
                     </td>
                 </tr>
