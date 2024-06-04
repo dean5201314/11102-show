@@ -58,16 +58,20 @@ body
 	padding:10px;
 	text-align:center;
 }
+/* 可以供table預先設定格式 */
 .all
 {
 	width:90%;
 	margin:10px auto 10px auto;
 }
+/* .all格式下的td預設格式 */
 .all td
 {
-	min-width:100px;
+	/* min-width:100px; 預設寬度太大，故改小為50px */
+	min-width:50px;
 	padding:10px;
 }
+/* 預設背景深橘色 */
 .tt
 {
 	background:#EF7429;
@@ -76,6 +80,7 @@ body
 {
 	background:#EF7429;
 }
+/* 預設背景淺黃色 */
 .pp
 {
 	background:#EFCA85;
@@ -84,6 +89,7 @@ body
 {
 	background:#EFCA85;
 }
+/* 預設input,button,select,textarea元件格式 */
 input[type=text],input[type=password],input[type=submit],button,.button,input[type=reset],input[type=button],select，textarea,input[type=number]
 {
 	background:#F3F3F3;
@@ -94,10 +100,12 @@ input[type=text],input[type=password],input[type=submit],button,.button,input[ty
 	margin:3px;
 	color:#333;
 }
+/* 預設input(text,password)元件寬度 */
 input[type=text],input[type=password]
 {
 	width:170px;
 }
+/* 以下為預設大分類、中分類格式 */
 .s
 {
 	display:none;
