@@ -135,7 +135,7 @@ function to($url)
     header("location:$url");
 }
 
-
+$Bottom=new DB('s4_bottom');
 
 
 ?>
