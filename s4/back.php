@@ -34,11 +34,11 @@
 		<div id="right">
 		<?php
 			$do=$_GET['do']??'admin';
-			$file="./front/{$do}.php";
+			$file="./back/{$do}.php";
 			if (isset($file)) {
 					include $file;
 			} else {
-					include "./front/admin.php";
+					include "./back/admin.php";
 			}
 		?>
 		</div>
