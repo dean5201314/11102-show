@@ -136,6 +136,7 @@ function to($url)
 }
 
 $Bottom=new DB('s4_bottom');
+$Mem=new DB('s4_mem');
 
 
 ?>
