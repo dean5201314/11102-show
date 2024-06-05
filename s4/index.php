@@ -40,6 +40,7 @@
                         </span>
                 </div>
                 <div id="right">
+                    
                 <?php
                     $do=$_GET['do']??'main';
                     $file="./front/{$do}.php";
