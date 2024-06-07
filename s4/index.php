@@ -23,8 +23,28 @@
                                 <a href="?do=news">最新消息</a> |
                                 <a href="?do=look">購物流程</a> |
                                 <a href="?do=buycart">購物車</a> |
-                                <a href="?do=login">會員登入</a> |
-                                <a href="?do=admin">管理登入</a>
+                                <?php
+                                if (isset($_SESSION['s4_mem'])) {
+                                ?>
+                                        <a href="./api/logout.php">登出</a> |
+                                <?php
+                                } else {
+                                ?>
+                                        <a href="?do=login">會員登入</a> |
+                                <?php
+                                }
+                                ?>                                
+                                <?php
+                                if (isset($_SESSION['s4_admin'])) {
+                                ?>
+                                        <a href="back.php">返回管理</a> |
+                                <?php
+                                } else {
+                                ?>
+                                        <a href="?do=admin">管理登入</a>
+                                <?php
+                                }
+                                ?>
                         </div>
                         <marquee behavior="" direction="">
                             年終特賣會開跑了 &nbsp; 情人節特惠活動 &nbsp;
