@@ -10,7 +10,7 @@
     </tr>
     <tr>
         <td class="tt ct">密碼</td>
-        <td class="pp"><input type="text" name="pw" id="pw"></td>
+        <td class="pp"><input type="password" name="pw" id="pw"></td>
     </tr>
     <tr>
         <td class="tt ct">驗證碼</td>
@@ -33,6 +33,7 @@
     <!-- login()內要以傳入參數區分資料表來源，故用資料表名稱's4_mem' -->
     <button onclick="login('s4_mem')">確認</button>
 </div>
+
 <script>
 function login(table) {
     /* 測試ajax:顯示php程式執行前的參數值
