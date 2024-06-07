@@ -20,8 +20,44 @@
             $_SESSION['ans']=$a+$b;
             echo $a ." + " . $b . " = ";
             ?>
-            <input type="text" name="chk" id="chk"></td>
+            <input type="text" name="ans" id="ans"></td>
     </tr>
 </table>
+
+
 <!-- .ct>btn -->
-<div class="ct"><button>確認</button></div>
+<div class="ct">
+    <!-- login()內要以傳入參數區分資料表來源，故用資料表名稱's4_mem' -->
+    <button onclick="login('s4_admin')">確認</button>
+</div>
+<script>
+function login(table) {
+    /* 測試ajax:顯示php程式執行前的參數值
+    let ans=$("#ans").val();
+    let acc=$("#acc").val();
+    let pw=$("#pw").val();
+    */
+    $.get('./api/chk_ans.php',{ans:$("#ans").val()}, (chk) => {
+        // 實務上若驗證碼錯誤，會重新產生驗證碼，再要求重新輸入
+        if (parseInt(chk) == 0) {
+            alert("對不起，您輸入的驗證碼有誤，請您重新輸入")
+        } else {
+            // 若驗證碼正確，則檢查帳號與密碼是否正確
+            $.post('./api/chk_pw.php',{table,acc:$("#acc").val(),pw:$("#pw").val()},(res)=>{
+                /* 測試ajax:顯示php程式執行後的參數值與回傳值
+                alert("table="+table)
+                alert("acc="+$("#acc").val())
+                alert("pw="+$("#pw").val())
+                alert("res="+res)
+                */
+                if (parseInt(res)==0) {
+                    alert("帳號或密碼錯誤，請重新輸入")
+                } else {
+                    // 若帳號密碼正確，就回到首頁
+                    location.href='back.php?do=admin'
+                }
+            })
+        }
+    })
+}
+</script>
