@@ -1,5 +1,7 @@
 <h2 class="ct">新增管理員帳號</h2>
-<!-- table.all>tr*3>td.tt.ct+td.pp>input:text -->
+<!-- form:post>table.all>tr*3>td.tt.ct+td.pp>input:text -->
+<!-- 使用form表單接受輸入，並將輸入的值用post方式傳送到後端程式"./api/save_admin.php" -->
+<form action="./api/save_admin.php" method="post">
 <table class="all">
     <tr>
         <td class="tt ct">帳號</td>
@@ -11,6 +13,7 @@
     </tr>
     <tr>
         <td class="tt ct">權限</td>
+        <!-- 使用陣列來儲存 checkbox多選項的答案 -->
         <td class="pp">
             <div>
                 <input type="checkbox" name="pr[]" value="1">
@@ -35,3 +38,9 @@
         </td>
     </tr>
 </table>
+<!-- .ct>input:submit+input:reset -->
+<div class="ct">
+    <input type="submit" value="新增">
+    <input type="reset" value="重置">
+</div>
+</form>
