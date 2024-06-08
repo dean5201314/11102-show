@@ -24,9 +24,8 @@
             } else {
                 // 因location.href=後的參數要放引號中，但此時 雙引號" 及單引號' 都已經使用，故改用內碼方式輸入&#39;(代表單引號')
                 echo "<button onclick='location.href=&#39;?do=edit_admin&id={$row['id']}&#39;'>修改</button>";
-                echo "<button onclick='location.href=?do=del_admin&id={$row['id']}'>刪除</button>";
-            }
-            
+                echo "<button onclick='del(&#39;s4_admin&#39;,{$row['id']})'>刪除</button>";
+            }            
             ?>
         </td>
     </tr>
@@ -37,3 +36,10 @@
 <div class="ct">
     <button onclick="location.href='index.php'">返回</button>
 </div>
+<script>
+function del(table,id){
+    $.post('./api/del.php',{table,id},()=>{
+        location.reload();
+    })
+}
+</script>
