@@ -8,6 +8,8 @@
 
 	<title>┌精品電子商務網站」</title>
 	<link href="./css/css.css" rel="stylesheet" type="text/css">
+	<!-- 因下一行中js.js已用到jq程式碼，故需在js.js之前先引入"jquery-3.4.1.min.js" -->
+	<script src="./js/jquery-3.4.1.min.js"></script>
 	<script src="./js/js.js"></script>
 </head>
 
@@ -50,7 +52,8 @@
 			<?= $Bottom->find(1)['bottom']; ?>
 		</div>
 	</div>
-	<script src="./js/jquery-3.4.1.min.js"></script>
+	<!-- 原先因bootstrap建議而放最後面，但因先前已用到js或jq程式碼，最後才引入會有問題，故需向上移 -->
+	<!-- <script src="./js/jquery-3.4.1.min.js"></script> -->
 </body>
 
 </html>

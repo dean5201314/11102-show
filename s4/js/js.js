@@ -4,6 +4,14 @@ function lof(x)
 	location.href=x
 }
 
+// 因多處功能需用到刪除資料，故將del()函數存js.js中共用，以table切換資料表來刪除資料
+function del(table,id){
+	// 將參數{table,id}用系統.post()方法，以post方式傳送到後端程式"./api/del.php"
+    $.post('./api/del.php',{table,id},()=>{
+        location.reload();
+    })
+}
+
 // 進階做法：將login.php及admin.php程式中login(table)函數存js.js中共用，以switch切換重新導向的網頁
 // function login(table) {
 //     $.get('./api/chk_ans.php',{ans:$("#ans").val()}, (chk) => {
