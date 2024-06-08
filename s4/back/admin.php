@@ -36,10 +36,3 @@
 <div class="ct">
     <button onclick="location.href='index.php'">返回</button>
 </div>
-<script>
-function del(table,id){
-    $.post('./api/del.php',{table,id},()=>{
-        location.reload();
-    })
-}
-</script>
