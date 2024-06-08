@@ -30,26 +30,24 @@
 				<a href="?do=mem">會員管理</a>
 				<a href="?do=bot">頁尾版權管理</a>
 				<a href="?do=news">最新消息管理</a>
-				<!-- 登出:將session的管理員變數清除 -->
+				<!-- 登出:直接呼叫"./api/logout.php"程式，將session的管理員變數清除 -->
 				<!-- <a href="?do=logout" style="color:#f00;">登出</a> -->
 				<a href="./api/logout.php" style="color:#f00;">登出</a>
 			</div>
-			</div>
-			</div>
 		</div>
 		<div id="right">
-		<?php
-			$do=$_GET['do']??'admin';
-			$file="./back/{$do}.php";
+			<?php
+			$do = $_GET['do'] ?? 'admin';
+			$file = "./back/{$do}.php";
 			if (isset($file)) {
-					include $file;
+				include $file;
 			} else {
-					include "./back/admin.php";
+				include "./back/admin.php";
 			}
-		?>
+			?>
 		</div>
 		<div id="bottom" style="line-height:70px; color:#FFF; background:url(./icon/bot.png);" class="ct">
-			<?=$Bottom->find(1)['bottom'];?>
+			<?= $Bottom->find(1)['bottom']; ?>
 		</div>
 	</div>
 	<script src="./js/jquery-3.4.1.min.js"></script>
