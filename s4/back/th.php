@@ -2,13 +2,15 @@
 <h2 class="ct">商品分類</h2>
 <!-- .ct*2>input:text -->
 <div class="ct">
-    新增大分類 <input type="text" name="big" id="big"> <button>新增</button>
+    新增大分類 <input type="text" name="big" id="big"> 
+              <button>新增</button>
 </div>
 <div class="ct">
     新增中分類 
     <!-- 輸入框前有選項框，包含許多大分類，故id用"bigs"表示，再用ajax撈出所有分類來 -->
     <select name="big" id="bigs"></select>
-    <input type="text" name="mid" id="mid"> <button>新增</button>
+    <input type="text" name="mid" id="mid"> 
+    <button>新增</button>
 </div>
 <!-- table.all>(tr.tt>td+td.ct>btn*2)+tr.pp.ct>td*2 -->
 <table class="all">
