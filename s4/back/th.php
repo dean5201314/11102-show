@@ -72,7 +72,8 @@ function edit(dom,id){
     if (name!=null) {
         // 用ajax的post方式呼叫"./api/save_type.php"程式，傳入{name,id}，寫入資料表
         $.post("./api/save_type.php",{name,id},()=>{
-            // 利用JQ功能，更新dom(buttom)的父物件(td)的前一物件(name的表單欄位)之text屬性內容，不觸發全網頁更新
+            /* 利用JQ功能，更新dom(buttom)的父物件(td)的前一物件(name的表單欄位)之text屬性內容，
+               不觸發全網頁更新，即可顯示更新後的分類名稱 */
             $(dom).parent().prev().text(name);
             // 若以下述指令重新載入頁面，將觸發全網頁更新，耗時較久
             // location.reload();
@@ -107,6 +108,9 @@ function addType(type){
 </script>
 
 <h2 class="ct">商品管理</h2>
+<div class="ct">
+    <button onclick="location.href='?do=add_goods'">新增商品</button>
+</div>
 <!-- table.all>(tr.tt.ct>td*5)+(tr.pp>td*5) -->
 <table class="all">
     <tr class="tt ct">
