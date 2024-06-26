@@ -121,7 +121,9 @@ function addType(type){
         <td>操作</td>
     </tr>
     <?php
+    // 讀取商品的內容
     $goods=$Goods->all();
+    // 將每筆商品資料放入每一列商品的欄位內容中
     foreach ($goods as $good) {
     ?>
     <tr class="pp">
@@ -131,12 +133,20 @@ function addType(type){
         <td><?=($good['sh']==1)?"上架":"下架";?></td>
         <td style="width:120px;">            
             <button>修改</button>
-            <button>刪除</button>            
-            <button>上架</button>
-            <button>下架</button>
+            <!-- 呼叫js.js中del()函數，配合展示用的資料庫特性，資料表名稱改為's4_goods' -->
+            <button onclick="del('s4_goods',<?=$good['id'];?>)">刪除</button>            
+            <button onclick="sh(1,<?=$good['id'];?>)">上架</button>
+            <button onclick="sh(0,<?=$good['id'];?>)">下架</button>
         </td>
     </tr>
     <?php
     }
     ?>
 </table>
+<script>
+function sh(sh,id){
+    $.post("./api/sh.php",{id,sh},()=>{
+        location.reload();
+    })
+}
+</script>
