@@ -109,6 +109,7 @@ function addType(type){
 
 <h2 class="ct">商品管理</h2>
 <div class="ct">
+    <!-- click時，本頁重整並多了do參數(用do呼叫add_goods.php程式新增資料) -->
     <button onclick="location.href='?do=add_goods'">新增商品</button>
 </div>
 <!-- table.all>(tr.tt.ct>td*5)+(tr.pp>td*5) -->
@@ -131,10 +132,12 @@ function addType(type){
         <td><?=$good['name'];?></td>
         <td><?=$good['stock'];?></td>
         <td><?=($good['sh']==1)?"上架":"下架";?></td>
-        <td style="width:120px;">            
-            <button>修改</button>
+        <td style="width:120px;">
+            <!-- click時，本頁重整並多了do、id兩個參數，導向edit_goods.php程式編輯資料 -->
+            <button onclick="location.href='?do=edit_goods&id=<?=$good['id'];?>'">修改</button>
             <!-- 呼叫js.js中del()函數，配合展示用的資料庫特性，資料表名稱改為's4_goods' -->
-            <button onclick="del('s4_goods',<?=$good['id'];?>)">刪除</button>            
+            <button onclick="del('s4_goods',<?=$good['id'];?>)">刪除</button>
+            <!-- 呼叫sh()函數，傳入的sh,id更新商品資料表上架或下架的設定 -->
             <button onclick="sh(1,<?=$good['id'];?>)">上架</button>
             <button onclick="sh(0,<?=$good['id'];?>)">下架</button>
         </td>
@@ -144,8 +147,11 @@ function addType(type){
     ?>
 </table>
 <script>
+// 依傳入的sh,id更新s4_goods商品資料表上架或下架的設定
 function sh(sh,id){
+    // 用ajax的post方式呼叫"./api/sh.php"程式，傳入"./api/sh.php"，更新商品資料表
     $.post("./api/sh.php",{id,sh},()=>{
+        // 為節省打字時間，採簡短指令，觸發全螢幕更新
         location.reload();
     })
 }
