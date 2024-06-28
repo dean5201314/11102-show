@@ -17,7 +17,7 @@ $goods=$Goods->find($_GET['id']);
             </td>
         </tr>
         <tr>
-            <th class="tt ct">所屬大分類</th>
+            <th class="tt ct">所屬中分類</th>
             <td class="pp">
                 <select name="mid" id="mid"></select>
             </td>
@@ -53,6 +53,8 @@ $goods=$Goods->find($_GET['id']);
     </table>
     <!-- Emmet縮寫: .ct>input:submit+input:reset+input:btn -->
     <div class="ct">
+        <!-- 記得將商品編號存於隱藏欄位一併送到"./api/save_goods.php"程式，才不會有誤判 -->
+        <input type="hidden" name="id" value="<?=$goods['id'];?>">
         <input type="submit" value="修改">
         <input type="reset" value="重置">
         <!-- click時，本頁重整並多了do參數(用do=th呼叫th.php程式返回原畫面) -->
@@ -94,16 +96,30 @@ function getTypes(type,big_id){
         switch (type) {
             // 若type值為大分類('big')，則繼續讀取中分類的資料
             case 'big':
+                // 用JQ方法將回傳的商品大分類碼的HTML程式碼放入網頁
                 $("#big").html(types);
+                // 將大分類選項值預設為商品資料的大分類值
+                $("#big").val(<?=$goods['big'];?>);
                 // 呼叫getTypes()，讀取中分類(type='mid')，$("#big").val()為剛讀出的大分類碼
                 getTypes('mid',$("#big").val());
             break;
             // 若type值為中分類('mid')，結束資料讀取動作
             case 'mid':
+                // 用JQ方法將回傳的商品中分類碼的HTML程式碼放入網頁
                 $("#mid").html(types);
+                // 將中分類選項值預設為商品資料的中分類值
+                $("#mid").val(<?=$goods['mid'];?>);
             break;
         }
     })
 }
 
+/* 用JQ變更大分類選項值的方法，僅限於已被讀取放在選項中的值才有效果(如下3項指令可供參考):
+   $("#big").val(3)
+   $("#big option[value='3']").prop('selected',true)
+   $("#big option").eq(2).prop('selected',true) */
+/* 用JQ變更中分類選項值的方法，僅限於已被讀取放在選項中的值才有效果(如下指令可供參考): 
+   $("#mid").val(6)
+   $("#mid option[value='6']").prop('selected',true)
+   $("#mid option").eq(1).prop('selected',true) */
 </script>

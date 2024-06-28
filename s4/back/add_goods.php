@@ -13,7 +13,7 @@
             </td>
         </tr>
         <tr>
-            <th class="tt ct">所屬大分類</th>
+            <th class="tt ct">所屬中分類</th>
             <td class="pp">
                 <select name="mid" id="mid"></select>
             </td>
@@ -89,12 +89,14 @@ function getTypes(type,big_id){
         switch (type) {
             // 若type值為大分類('big')，則繼續讀取中分類的資料
             case 'big':
+                // 用JQ方法將回傳的商品大分類碼的HTML程式碼放入網頁
                 $("#big").html(types);
                 // 呼叫getTypes()，讀取中分類(type='mid')，$("#big").val()為剛讀出的大分類碼
                 getTypes('mid',$("#big").val());
             break;
             // 若type值為中分類('mid')，結束資料讀取動作
             case 'mid':
+                // 用JQ方法將回傳的商品中分類碼的HTML程式碼放入網頁
                 $("#mid").html(types);
             break;
         }
