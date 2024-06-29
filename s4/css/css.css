@@ -26,6 +26,7 @@ body
 	vertical-align:top;
 	border:#000 1px solid;
 }
+/* 左選單中a標籤的設定 */
 #left a
 {
 	display:block;
@@ -110,6 +111,12 @@ input[type=text],input[type=password]
 {
 	display:none;
 }
+/* 為區分子選單，變更背景色，加#left為避免被上方#left a權重蓋掉 */
+#left .s a
+{
+	background-color: lightgreen;
+}
+/* div.ww hover時影響下一層 div.s 的設定 */
 div.ww:hover > div.s
 {
 	display:block;
@@ -118,3 +125,6 @@ div.ww:hover > div.s
 {
 	font-size:12px;
 }
+/* CSS Selector 權重可以用以下一行簡單說明：
+   !important > inline styles > ID 選擇器(x100) > Class 選擇器(x10) > Html 標籤選擇器(x1)
+*/

@@ -54,6 +54,33 @@
                 </div>
                 <div id="left" class="ct">
                         <div style="min-height:400px;">
+                        <!-- 配合CSS中left a設定，採用a標籤 -->
+                        <a>全部商品</a>
+                        <?php
+                        $bigs=$Type->all(['big_id'=>0]);
+                        foreach ($bigs as $big) {
+                        ?>
+                        <!-- 配合div.ww:hover > div.s設定，用div.ww包住最外層 -->
+                        <div class="ww">
+                            <a href=""><?=$big['name'];?></a>
+                            <div class="s">
+                                <?php
+                                // 若有中分類資料時(筆數>0)才顯示資料
+                                if ($Type->count(['big_id'=>$big['id']])>0) {
+                                    $mids=$Type->all(['big_id'=>$big['id']]);
+                                    foreach ($mids as $mid) {
+                                ?>
+                                    <!-- 為區分子選單，用CSS變更背景色 -->
+                                    <a href=""><?=$mid['name'];?></a>
+                                <?php
+                                    }
+                                }
+                                ?>
+                            </div>
+                        </div>
+                        <?php
+                        }
+                        ?>
                         </div>
                         <span>
                                 <div>進站總人數</div>
