@@ -55,23 +55,30 @@
                 <div id="left" class="ct">
                         <div style="min-height:400px;">
                         <!-- 配合CSS中left a設定，採用a標籤 -->
-                        <a>全部商品</a>
+                        <!-- 全部商品為所有上架商品數量(count) -->
+                        <a>全部商品(<?=$Goods->count(['sh'=>1]);?>)</a>
                         <?php
+                        // $bigs為所有的大分類(big_id=0)資料
                         $bigs=$Type->all(['big_id'=>0]);
+                        // $big為當前筆的大分類資料
                         foreach ($bigs as $big) {
                         ?>
                         <!-- 配合div.ww:hover > div.s設定，用div.ww包住最外層 -->
                         <div class="ww">
-                            <a href=""><?=$big['name'];?></a>
+                            <!-- 商品大分類數量為商品大分類碼(big)等於當前筆大分類id($big['id'])的上架(sh=1)數量 -->
+                            <a href=""><?=$big['name'];?>(<?=$Goods->count(['sh'=>1,'big'=>$big['id']]);?>)</a>
                             <div class="s">
                                 <?php
                                 // 若有中分類資料時(筆數>0)才顯示資料
                                 if ($Type->count(['big_id'=>$big['id']])>0) {
+                                    // $mids為大分類碼(big_id)等於當前筆的大分類id的所有中分類資料
                                     $mids=$Type->all(['big_id'=>$big['id']]);
+                                    // $mid為當前筆的中分類資料
                                     foreach ($mids as $mid) {
                                 ?>
                                     <!-- 為區分子選單，用CSS變更背景色 -->
-                                    <a href=""><?=$mid['name'];?></a>
+                                    <!-- 商品中分類數量為商品中分類碼(mid)等於當前筆中分類id($mid['id'])的上架(sh=1)數量 -->
+                                    <a href=""><?=$mid['name'];?>(<?=$Goods->count(['sh'=>1,'mid'=>$mid['id']]);?>)</a>                                    
                                 <?php
                                     }
                                 }
