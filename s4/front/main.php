@@ -83,13 +83,20 @@ foreach ($goods as $good) {
     // echo $good['name'];
     // echo "<br>";
 ?>
+<!-- 用div仿table樣式製作，純table製作時，要處理的問題會比較多 -->
 <div class="item">
   <div class="img">
-    <img src="./img/<?=$good['img'];?>" style="width: 80%; height: 110px;">
+    <a href="?do=detail&id=<?=$good['id'];?>">
+        <img src="./img/<?=$good['img'];?>" style="width: 80%; height: 110px;">
+    </a>
   </div>
   <div class="info">
     <div class="ct tt"><?=$good['name'];?></div>
-    <div>價錢：<?=$good['price'];?></div>
+    <div>
+        價錢：<?=$good['price'];?>
+        <!-- 用float靠右+padding微調，調整 "我要購買"圖片 位置 -->
+        <img src="./icon/0402.jpg" style="float: right; padding: 3px;">
+    </div>
     <div>規格：<?=$good['spec'];?></div>
     <div>簡介：<?=mb_substr($good['intro'],0,25);?>...</div>
   </div>
