@@ -1,4 +1,5 @@
 <?php
+// 用get方法傳入的id讀取商品資料放入DataSet變數$goods
 $goods=$Goods->find($_GET['id']);
 ?>
 <!-- 複製main.php畫面及CSS來修改，快速完成程式 -->
@@ -49,7 +50,8 @@ $goods=$Goods->find($_GET['id']);
     </a>
   </div>
   <div class="info">
-    <div>分類：</div>
+    <!-- 用商品的big讀出大分類名稱，用商品的mid讀出中分類名稱 -->
+    <div>分類：<?=$Type->find($goods['big'])['name'];?> > <?=$Type->find($goods['mid'])['name'];?></div>
     <div>編號：<?=$goods['no'];?></div>
     <div>價錢：<?=$goods['price'];?></div>
     <div>詳細說明：<?=$goods['intro'];?>...</div>
