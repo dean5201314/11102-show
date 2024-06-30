@@ -59,6 +59,13 @@ if ($type==0) {
     border: 1px solid #999;
     /* border-right: 0px; */
 }
+/* 調整商品圖片因包入a標籤後，偏離正中央的問題 */
+.item .img img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
 .item .info{
     width: 67%;
     /* 加 display + flex-direction，使得下層 flex-grow 生效，將欄高自動填滿整個div */
