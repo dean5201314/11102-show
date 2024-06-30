@@ -45,7 +45,9 @@ body
 	display:inline-block;
 	width:65%;
 	padding:2%;
-	min-height:550px;
+	/* 將原本的min-height:550px 改成height + overflow  */
+	height:550px;
+	overflow: auto;
 	border:#000 1px solid;
 }
 #bottom

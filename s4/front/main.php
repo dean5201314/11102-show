@@ -42,7 +42,40 @@ if ($type==0) {
 ?>
 
 <h2><?=$nav;?></h2>
-
+<style>
+.item{
+    width: 80%;
+    height: 160px;
+    background-color: #F4C591;
+    margin: 5px auto;
+    /* 用 flex 將下層div改為並列 */
+    display: flex;
+}
+.item .img{
+    width: 33%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #999;
+    /* border-right: 0px; */
+}
+.item .info{
+    width: 67%;
+    /* 加 display + flex-direction，使得下層 flex-grow 生效，將欄高自動填滿整個div */
+    display: flex;
+    flex-direction: column;
+}
+.info div{
+    border: 1px solid #999;
+    border-left: 0px;
+    border-top: 0px;
+    /* flex-grow 將欄高自動填滿整個div，但上層需有 display + flex-direction 才有用 */
+    flex-grow: 1;
+}
+.info div:nth-child(1){
+    border-top: 1px solid #999;
+}
+</style>
 <?php
 // $goods:商品資料集變數，$good:當前筆商品資料變數
 foreach ($goods as $good) {
@@ -52,13 +85,13 @@ foreach ($goods as $good) {
 ?>
 <div class="item">
   <div class="img">
-    <img src="./img/<?=$good['img'];?>" style="width: 200px; height: 150px;">
+    <img src="./img/<?=$good['img'];?>" style="width: 80%; height: 110px;">
   </div>
   <div class="info">
     <div class="ct tt"><?=$good['name'];?></div>
     <div>價錢：<?=$good['price'];?></div>
     <div>規格：<?=$good['spec'];?></div>
-    <div>簡介：<?=$good['intro'];?></div>
+    <div>簡介：<?=mb_substr($good['intro'],0,25);?>...</div>
   </div>
 </div>
 <?php
