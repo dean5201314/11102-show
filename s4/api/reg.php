@@ -17,4 +17,3 @@ if (isset($_POST['id'])) {
    /* 編輯結束後重新導向回到"../back.php?do=mem"原畫面 */
    to("../back.php?do=mem");
 }
-?>

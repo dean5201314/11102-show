@@ -9,5 +9,3 @@ $_POST['pr']=serialize($_POST['pr']);
 $Admin->save($_POST);
 // 管理員資料存資料庫後，回到後台原網頁
 to("../back.php?do=admin");
-
-?>

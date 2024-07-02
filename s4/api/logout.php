@@ -5,4 +5,3 @@ session_start();
 unset($_SESSION['s4_mem'],$_SESSION['s4_admin']);
 // 用戶身分清除後，應回到首頁
 header("location:../index.php");
-?>

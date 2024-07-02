@@ -6,5 +6,3 @@ $Mem->save($_POST);
 
 /* 結束後重新導向回到"../back.php?do=mem"原畫面 */
 to("../back.php?do=mem");
-
-?>
