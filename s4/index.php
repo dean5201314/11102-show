@@ -35,7 +35,7 @@
                                         <a href="?do=login">會員登入</a> |
                                 <?php
                                 }
-                                ?>                                
+                                ?>
                                 <?php
                                 if (isset($_SESSION['s4_admin'])) {
                                 ?>
@@ -104,7 +104,7 @@
                 <?php
                     $do=$_GET['do']??'main';
                     $file="./front/{$do}.php";
-                    if (isset($file)) {
+                    if (file_exists($file)) {
                             include $file;
                     } else {
                             include "./front/main.php";

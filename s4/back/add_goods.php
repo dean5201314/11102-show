@@ -102,5 +102,4 @@ function getTypes(type,big_id){
         }
     })
 }
-
 </script>

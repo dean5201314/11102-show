@@ -6,4 +6,3 @@ $Goods->save($_POST);
 
 /* 傳入$_POST參數:$_POST['sh'] & $_POST['id'];用以完成下列sql指令: 
 update s4_goods set sh=$_POST['sh'] where id=$_POST['id']; */
-?>

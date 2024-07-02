@@ -18,5 +18,3 @@ if (!isset($_POST['id'])) {
 
 $Goods->save($_POST);
 to("../back.php?do=th");
-
-?>

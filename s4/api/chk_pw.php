@@ -38,5 +38,3 @@ if ($chk) {
 }
 
 // dd($_SESSION);
-
-?>

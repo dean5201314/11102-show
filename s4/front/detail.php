@@ -60,7 +60,7 @@ $goods=$Goods->find($_GET['id']);
 </div>
 <div class="tt ct" style="width: 80%;margin: 5px auto;">
     購買數量
-    <input type="number" value="1">
+    <input type="number" value="1" style="width: 50px;">
     <!-- 用padding微調，調整 "我要購買"圖片 位置 -->
     <img src="./icon/0402.jpg" style="padding-top: 3px;">
 </div>

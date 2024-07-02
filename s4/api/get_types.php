@@ -8,4 +8,3 @@ foreach ($types as $type) {
     // 製作出商品(大/中)分類碼的選項值與名稱的HTML程式碼
     echo "<option value='{$type['id']}'>{$type['name']}</option>";
 }
-?>

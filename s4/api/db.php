@@ -133,6 +133,7 @@ function dd($array)
 function to($url)
 {
     header("location:$url");
+    exit();
 }
 
 $Bottom=new DB('s4_bottom');

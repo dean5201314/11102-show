@@ -11,5 +11,3 @@ session_start();
 
 // 將上述的判斷式，簡化為下述的三元運算式
 echo ($_SESSION['ans']==$_GET['ans'])?1:0;
-
-?>
