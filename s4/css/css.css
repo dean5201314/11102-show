@@ -43,7 +43,8 @@ body
 #right
 {
 	display:inline-block;
-	width:65%;
+	/* 調整右視窗寬度合理貼近右側邊框，對齊footer */
+	width:71%;
 	padding:2%;
 	/* 將原本的min-height:550px 改成height + overflow  */
 	height:550px;
