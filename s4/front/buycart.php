@@ -64,8 +64,10 @@ else
 ?>
 </table>
 <div class="ct">
-    <img src="./icon/0411.jpg">
-    <img src="./icon/0412.jpg">
+    <!-- 按"繼續選購商品"回到首頁(會顯示全部商品) -->
+    <img src="./icon/0411.jpg" onclick="location.href='index.php'">
+    <!-- 按"進入結帳櫃台"去到 購物結帳頁面 -->
+    <img src="./icon/0412.jpg" onclick="location.href='?do=checkout'">
 </div>
 <script>
 function delcart(id){
