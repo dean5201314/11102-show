@@ -68,6 +68,7 @@ $goods=$Goods->find($_GET['id']);
 function buy(){
     let id=<?=$_GET['id'];?>;
     let qt=$("#qt").val();
+    // 傳入商品編號及數量，會購物車頁面，產生購物車商品資料明細的網頁畫面
     location.href=`?do=buycart&id=${id}&qt=${qt}`;
 }
 </script>
