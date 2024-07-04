@@ -18,10 +18,13 @@ if (!isset($_SESSION['s4_mem'])) {
 echo "<h2 class='ct'>{$_SESSION['s4_mem']}的購物車</h2>";
 
 // 如沒有$_SESSION購物車矩陣變數，顯示提示訊息：購物車中尚無商品
-if (!isset($_SESSION['cart'])) {
+// if (!isset($_SESSION['cart'])) {
+// 若session變數cart沒有值，empty()仍會顯示提示訊息，可避免用!isset()發生沒有值而不顯示提示訊息
+if (empty($_SESSION['cart'])) {
     echo "<h2 class='ct'>購物車中尚無商品</h2>";
 }
 // else { dd($_SESSION['cart']); }  使用 dd($_SESSION['cart']); 測試購物車輸入結果
+// 如有$_SESSION購物車矩陣變數，顯示購物車中的商品資料及選購數量
 else 
 {
 ?>
@@ -41,6 +44,7 @@ else
             <td>刪除</td>
     </tr>
 <?php
+    // 用編號讀取商品資料表，顯示購物車中的商品資料及選購數量
     foreach ($_SESSION['cart'] as $id => $qt) {
         $goods=$Goods->find($id);
 ?>
@@ -53,7 +57,7 @@ else
                 <td><?=$goods['stock'];?></td>
                 <td><?=$goods['price'];?></td>
                 <td><?=$goods['price'] * $qt;?></td>
-                <td><img src="./icon/0415.jpg" alt="" srcset=""></td>
+                <td><img src="./icon/0415.jpg" onclick="delcart(<?=$id;?>)"></td>
         </tr>
 <?php
     }
@@ -63,5 +67,15 @@ else
     <img src="./icon/0411.jpg">
     <img src="./icon/0412.jpg">
 </div>
+<script>
+function delcart(id){
+    $.post("./api/del_cart.php",{id},()=>{
+        // 此處不要用reload()，否則刪除最後一筆時，會因為reload()時帶有id變數而在刪除後又建立id資料，重複循環
+        // location.reload();
+        // 此處用href()，只傳do，不傳其他變數，刪除最後一筆時不會再重複建立id資料，達到預期效果
+        location.href="?do=buycart";
+    })
+}
+</script>
 <?php
 }
