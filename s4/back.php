@@ -41,7 +41,7 @@
 			<?php
 			$do = $_GET['do'] ?? 'admin';
 			$file = "./back/{$do}.php";
-			if (isset($file)) {
+			if (file_exists($file)) {
 				include $file;
 			} else {
 				include "./back/admin.php";
