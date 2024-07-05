@@ -4,13 +4,9 @@ $row=$Order->find($_GET['id']);
 ?>
 <!-- 只有編號數值部分要顯示紅色，用span標籤做局部顯示 -->
 <h2 class="ct">訂單編號<span style="color: red;"><?=$row['no'];?></span>的詳細資料</h2>
-<!-- 使用form表單輸入，送出後到"./api/order.php"進行結帳處理 -->
-<form action="./api/order.php" method="post">
-
 <!-- 複製"checkout.php"畫面來修改，用margin: 0 auto;消除表格上下間隙縫" -->
 <table class="all" style="margin: 0 auto;">
     <tr>
-
         <td class="tt ct">登入帳號</td>
         <td class="pp">
             <?=$row['acc'];?>
@@ -18,19 +14,19 @@ $row=$Order->find($_GET['id']);
     </tr>
     <tr>
         <td class="tt ct">姓名</td>
-        <td class="pp"><input type="text" style="border:0; background:#EFCA85;" name="name" value="<?=$row['name'];?>"></td>
+        <td class="pp"><?=$row['name'];?></td>
     </tr>
     <tr>
         <td class="tt ct">電子信箱</td>
-        <td class="pp"><input type="text" style="border:0; background:#EFCA85;" name="email" value="<?=$row['email'];?>"></td>
+        <td class="pp"><?=$row['email'];?></td>
     </tr>
     <tr>
         <td class="tt ct">聯絡地址</td>
-        <td class="pp"><input type="text" style="border:0; background:#EFCA85;" name="addr" value="<?=$row['addr'];?>"></td>
+        <td class="pp"><?=$row['addr'];?></td>
     </tr>   
     <tr>
         <td class="tt ct">聯絡電話</td>
-        <td class="pp"><input type="text" style="border:0; background:#EFCA85;" name="tel" value="<?=$row['tel'];?>"></td>
+        <td class="pp"><?=$row['tel'];?></td>
     </tr>
 </table>
 <!-- 複製"buycart.php"商品資料畫面來修改，用margin: 0 auto;消除表格上下間隙縫" -->
@@ -71,8 +67,6 @@ $row=$Order->find($_GET['id']);
 <div class="all tt ct" style="margin: 0 auto;">總價:<?=$row['total'];?>元</div>
 
 <div class="ct">
-    <!-- 按"返回"，重新定向到訂單管理頁面 -->
-    <input type="button" value="返回" onclick="location.href='?do=order'">
+    <!-- 因不用form表單功能，故將input改為button標籤，按"返回"按鈕，重新定向到訂單管理頁面 -->
+    <button onclick="location.href='?do=order'">返回</button>
 </div>
-
-</form>
