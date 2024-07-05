@@ -27,7 +27,7 @@
         <td class="pp ct"><?=date("Y/m/d",strtotime($row['orderdate']));?></td>
         <td class="pp ct">
         <?php
-            echo "<button onclick='del(&#39;s4_mem&#39;,{$row['id']})'>刪除</button>";
+            echo "<button onclick='del(&#39;s4_orders&#39;,{$row['id']})'>刪除</button>";
         ?>
         </td>
     </tr>
