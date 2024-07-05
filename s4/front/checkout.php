@@ -3,13 +3,10 @@
 $row=$Mem->find(['acc'=>$_SESSION['s4_mem']]);
 ?>
 
-<!-- 因為要精簡程式碼，故在此設計為使用form表單並共用"./api/reg.php"程式 -->
+<!-- 使用form表單輸入，送出後到"./api/order.php"進行結帳處理 -->
 <form action="./api/order.php" method="post">
-<!-- 若不想共用"./api/reg.php"程式，form表單action可改用"./api/save_mem.php"
-<form action="./api/save_mem.php" method="post"> -->
 
-<!-- 複製"edit_mem.php"畫面來修改，縮短時間，用margin: 0 auto;消除表格上下間隙縫" -->
-<!-- table.all>tr*6>td.tt.ct+td.pp>input:text -->
+<!-- 複製"edit_mem.php"畫面來修改，用margin: 0 auto;消除表格上下間隙縫" -->
 <table class="all" style="margin: 0 auto;">
     <tr>
 
@@ -35,8 +32,7 @@ $row=$Mem->find(['acc'=>$_SESSION['s4_mem']]);
         <td class="pp"><input type="text" name="tel" value="<?=$row['tel'];?>"></td>
     </tr>
 </table>
-<!-- 複製"buycart.php"商品資料畫面來修改，縮短時間，用margin: 0 auto;消除表格上下間隙縫" -->
-<!-- table.all>tr.ct.tt*2 -->
+<!-- 複製"buycart.php"商品資料畫面來修改，用margin: 0 auto;消除表格上下間隙縫" -->
 <table class="all" style="margin: 0 auto;">
     <tr class="ct tt">
         <!-- td*7 -->
@@ -49,7 +45,8 @@ $row=$Mem->find(['acc'=>$_SESSION['s4_mem']]);
             <td>小計</td>
     </tr>
 <?php
-    $sum=0; //總計初始值預設為 0
+    //總計初始值預設為 0
+    $sum=0;
     // 用編號讀取商品資料表，顯示購物車中的商品資料及選購數量
     foreach ($_SESSION['cart'] as $id => $qt) {
         $goods=$Goods->find($id);
@@ -73,7 +70,8 @@ $row=$Mem->find(['acc'=>$_SESSION['s4_mem']]);
 
 <!-- .ct>btn*2 -->
 <div class="ct">
-    <input type="hidden" name="id" value="<?=$row['id'];?>">
+    <!-- 因為$sum不是表單欄位也不在session變數中，故用隱藏欄位存放，才能隨表單一起送出 -->
+    <input type="hidden" name="total" value="<?=$sum;?>">
     <input type="submit" value="確定送出">
     <!-- 按"返回修改訂單"，重新定向到購物車頁面 -->
     <input type="button" value="返回修改訂單" onclick="location.href='?do=buycart'">
