@@ -9,6 +9,9 @@ $_POST['cart']=serialize($_SESSION['cart']);
 $_POST['acc']=$_SESSION['s4_mem'];
 
 $Order->save($_POST);
+
+// 寫入資料庫後，立即清除購物車內容($_SESSION['cart'])，避免帶入到下筆訂單中，增加困擾讓使用者不滿
+unset($_SESSION['cart']);
 /* 為了在資料庫寫入後，立即顯示訂購成功訊息的pop視窗，在此才先用 ?> 標籤，結束 php 程式區段，
    實務上宜避免 前端(script)、後端(php) 區段混用，以防暴露出後端資料夾結構(有資安疑慮)，
    因此在 ./api 資料夾下新增 index.html 產生空白網頁或重新定向到前台 location.href="../index.php"; */
