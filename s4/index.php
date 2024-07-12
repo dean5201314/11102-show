@@ -24,7 +24,16 @@
                                 <a href="?">回首頁</a> |
                                 <a href="?do=news">最新消息</a> |
                                 <a href="?do=look">購物流程</a> |
-                                <a href="?do=buycart">購物車</a> |
+                                <a href="?do=buycart">購物車(
+                                    <span id='amount'>
+                                    <?php
+                                    if (isset($_SESSION['cart']) && count($_SESSION['cart'])>0) {
+                                        echo count($_SESSION['cart']);
+                                    } else {
+                                        echo 0;
+                                    }
+                                    ?>
+                                    </span>)</a> |
                                 <?php
                                 if (isset($_SESSION['s4_mem'])) {
                                 ?>
@@ -49,45 +58,45 @@
                                 ?>
                         </div>
                         <marquee behavior="" direction="">
-                            年終特賣會開跑了 &nbsp; 情人節特惠活動 &nbsp;
+                                年終特賣會開跑了 &nbsp; 情人節特惠活動 &nbsp;
                         </marquee>
                 </div>
                 <div id="left" class="ct">
                         <div style="min-height:400px;">
-                        <!-- 配合CSS中left a設定，採用a標籤，全部商品為所有上架商品數量(count)，點選a標籤時，預設會導向main.php程式 -->
-                        <a href="?type=0">全部商品(<?=$Goods->count(['sh'=>1]);?>)</a>
-                        <?php
-                        // $bigs為所有的大分類(big_id=0)資料
-                        $bigs=$Type->all(['big_id'=>0]);
-                        // $big為當前筆的大分類資料
-                        foreach($bigs as $big){
-                        ?>
-                        <!-- 配合div.ww:hover > div.s設定，用div.ww包住最外層 -->
-                        <div class="ww">
-                            <!-- 用a標籤href傳送當前筆大分類id($big['id'])，點選a標籤時，預設會導向main.php程式，
-                                 商品大分類數量為商品大分類碼(big)等於當前筆大分類id($big['id'])的上架(sh=1)數量 -->
-                            <a href="?type=<?=$big['id'];?>"><?=$big['name'];?>(<?=$Goods->count(['sh'=>1,'big'=>$big['id']]);?>)</a>
-                            <div class="s">
+                                <!-- 配合CSS中left a設定，採用a標籤，全部商品為所有上架商品數量(count)，點選a標籤時，預設會導向main.php程式 -->
+                                <a href="?type=0">全部商品(<?= $Goods->count(['sh' => 1]); ?>)</a>
                                 <?php
-                                // 若有中分類資料時(筆數>0)才顯示資料
-                                if($Type->count(['big_id'=>$big['id']])>0){
-                                    // $mids為大分類碼(big_id)等於當前筆的大分類id的所有中分類資料
-                                    $mids=$Type->all(['big_id'=>$big['id']]);
-                                    // $mid為當前筆的中分類資料
-                                    foreach($mids as $mid){
+                                // $bigs為所有的大分類(big_id=0)資料
+                                $bigs = $Type->all(['big_id' => 0]);
+                                // $big為當前筆的大分類資料
+                                foreach ($bigs as $big) {
                                 ?>
-                                    <!-- 為區分子選單，用CSS變更背景色，用a標籤href傳送當前筆中分類id($mid['id'])，點選a標籤時，預設會導向main.php程式，
+                                        <!-- 配合div.ww:hover > div.s設定，用div.ww包住最外層 -->
+                                        <div class="ww">
+                                                <!-- 用a標籤href傳送當前筆大分類id($big['id'])，點選a標籤時，預設會導向main.php程式，
+                                 商品大分類數量為商品大分類碼(big)等於當前筆大分類id($big['id'])的上架(sh=1)數量 -->
+                                                <a href="?type=<?= $big['id']; ?>"><?= $big['name']; ?>(<?= $Goods->count(['sh' => 1, 'big' => $big['id']]); ?>)</a>
+                                                <div class="s">
+                                                        <?php
+                                                        // 若有中分類資料時(筆數>0)才顯示資料
+                                                        if ($Type->count(['big_id' => $big['id']]) > 0) {
+                                                                // $mids為大分類碼(big_id)等於當前筆的大分類id的所有中分類資料
+                                                                $mids = $Type->all(['big_id' => $big['id']]);
+                                                                // $mid為當前筆的中分類資料
+                                                                foreach ($mids as $mid) {
+                                                        ?>
+                                                                        <!-- 為區分子選單，用CSS變更背景色，用a標籤href傳送當前筆中分類id($mid['id'])，點選a標籤時，預設會導向main.php程式，
                                          商品中分類數量為商品中分類碼(mid)等於當前筆中分類id($mid['id'])的上架(sh=1)數量 -->
-                                    <a href="?type=<?=$mid['id'];?>"><?=$mid['name'];?>(<?=$Goods->count(['sh'=>1,'mid'=>$mid['id']]);?>)</a>
+                                                                        <a href="?type=<?= $mid['id']; ?>"><?= $mid['name']; ?>(<?= $Goods->count(['sh' => 1, 'mid' => $mid['id']]); ?>)</a>
+                                                        <?php
+                                                                }
+                                                        }
+                                                        ?>
+                                                </div>
+                                        </div>
                                 <?php
-                                    }
                                 }
                                 ?>
-                            </div>
-                        </div>
-                        <?php
-                        }
-                        ?>
                         </div>
                         <span>
                                 <div>進站總人數</div>
@@ -96,18 +105,18 @@
                         </span>
                 </div>
                 <div id="right">
-                <?php
-                    $do=$_GET['do']??'main';
-                    $file="./front/{$do}.php";
-                    if(file_exists($file)){
-                            include $file;
-                    }else{
-                            include "./front/main.php";
-                    }
-                ?>
+                        <?php
+                        $do = $_GET['do'] ?? 'main';
+                        $file = "./front/{$do}.php";
+                        if (file_exists($file)) {
+                                include $file;
+                        } else {
+                                include "./front/main.php";
+                        }
+                        ?>
                 </div>
                 <div id="bottom" style="line-height:70px;background:url(./icon/bot.png); color:#FFF;" class="ct">
-                    <?=$Bottom->find(1)['bottom'];?>
+                        <?= $Bottom->find(1)['bottom']; ?>
                 </div>
         </div>
         <!-- 原先因bootstrap建議而放最後面，但因先前已用到js或jq程式碼，最後才引入會有問題，故需向上移 -->
