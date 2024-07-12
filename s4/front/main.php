@@ -101,7 +101,9 @@ foreach ($goods as $good) {
     <div>
         價錢：<?=$good['price'];?>
         <!-- 用float靠右+padding微調，調整 "我要購買"圖片 位置 -->
-        <img src="./icon/0402.jpg" style="float: right; padding: 3px;" onclick="location.href='?do=buycart&id=<?=$good['id'];?>&qt=1'">
+        <!-- <img src="./icon/0402.jpg" style="float: right; padding: 3px;" onclick="location.href='?do=buycart&id=<?php //$good['id']; ?>&qt=1'"> -->
+         <!--  -->
+        <img src="./icon/0402.jpg" style="float: right; padding: 3px;" onclick="buy(<?=$good['id'];?>,1)">
     </div>
     <div>規格：<?=$good['spec'];?></div>
     <div>簡介：<?=mb_substr($good['intro'],0,25);?>...</div>
@@ -110,3 +112,12 @@ foreach ($goods as $good) {
 <?php
 }
 ?>
+
+<script>
+// 呼叫"./api/buycart.php"，計算並回傳購物車品項數
+function buy(id,qt){
+    $.post("./api/buycart.php",{id,qt},(amount)=>{
+        $("#amount").text(amount);
+    })
+}
+</script>
