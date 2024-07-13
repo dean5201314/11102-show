@@ -142,6 +142,7 @@ $Admin=new DB('s4_admin');
 $Type=new DB('s4_type');
 $Goods=new DB('s4_goods');
 $Order=new DB('s4_orders');
+$Total=new DB('s4_total');
 
 
 ?>

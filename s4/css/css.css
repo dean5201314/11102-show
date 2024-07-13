@@ -30,10 +30,12 @@ body
 #left a
 {
 	display:block;
-	padding:20px 5px 20px 5px;
+	/* padding:20px 5px 20px 5px; */
+	padding:10px 5px 10px 5px;
 	text-decoration:none;
 	background:#F4C591;
-	margin:10px auto 10px auto;
+	/* margin:10px auto 10px auto; */
+	margin:5px auto 5px auto;
 	color:#65350A;
 }
 .ct
