@@ -32,6 +32,7 @@
 				<a href="?do=mem">會員管理</a>
 				<a href="?do=bot">頁尾版權管理</a>
 				<a href="?do=news">最新消息管理</a>
+				<a href="?do=total">進站總人數管理</a>
 				<!-- 登出:直接呼叫"./api/logout.php"程式，將session的管理員變數清除 -->
 				<!-- <a href="?do=logout" style="color:#f00;">登出</a> -->
 				<a href="./api/logout.php" style="color:#f00;">登出</a>
