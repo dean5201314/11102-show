@@ -11,6 +11,19 @@ function del(table,id){
         location.reload();
     })
 }
+// op():開啟彈出視窗 與 cl():關閉彈出視窗
+function op(x,y,url)
+{
+	$(x).fadeIn()
+	if(y)
+	$(y).fadeIn()
+	if(y&&url)
+	$(y).load(url)
+}
+function cl(x)
+{
+	$(x).fadeOut();
+}
 
 // 進階做法：將login.php及admin.php程式中login(table)函數存js.js中共用，以switch切換重新導向的網頁
 // function login(table) {
