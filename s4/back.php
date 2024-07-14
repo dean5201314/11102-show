@@ -14,6 +14,15 @@
 </head>
 
 <body>
+	<!-- 配合彈出視窗所需的div網頁程式碼(需再配合css設定) -->
+	<div id="cover" style="display:none; ">
+		<div id="coverr">
+			<a style="position:absolute; right:3px; top:4px; cursor:pointer; z-index:9999;" onclick="cl(&#39;#cover&#39;)">X</a>
+			<!-- #cvr為彈出視窗所需的區塊: 顯示彈出視窗內的網頁內容 -->
+			<div id="cvr" style="position:absolute; width:99%; height:100%; margin:auto; z-index:9898;"></div>
+		</div>
+	</div>
+
 	<iframe name="back" style="display:none;"></iframe>
 	<div id="main">
 		<div id="top">
@@ -31,8 +40,9 @@
 				<a href="?do=order">訂單管理</a>
 				<a href="?do=mem">會員管理</a>
 				<a href="?do=bot">頁尾版權管理</a>
-				<a href="?do=news">最新消息管理</a>
+				<!-- <a href="?do=news">最新消息管理</a> -->
 				<a href="?do=total">進站總人數管理</a>
+				<a href="?do=ad">動態消息管理</a>
 				<!-- 登出:直接呼叫"./api/logout.php"程式，將session的管理員變數清除 -->
 				<!-- <a href="?do=logout" style="color:#f00;">登出</a> -->
 				<a href="./api/logout.php" style="color:#f00;">登出</a>
