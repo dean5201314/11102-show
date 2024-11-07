@@ -17,12 +17,20 @@
         <td class="pp">
             <!-- 如果用js做，前端user可以用F12看到答案，所以改成後端做 -->
             <?php
-            $a = rand(10, 99);
-            $b = rand(10, 99);
-            // 用session變數存答案，讓前端看不到
-            $_SESSION['ans'] = $a + $b;
-            echo $a . " + " . $b . " = ";
+            /* 以下為使用加法的驗證程式 
+            // $a = rand(10, 99);
+            // $b = rand(10, 99);
+            // // 用session變數存答案，讓前端看不到
+            // $_SESSION['ans'] = $a + $b;
+            // echo $a . " + " . $b . " = ";
+            */
+
+            /* 以下為使用圖形的驗證程式 
+            $_SESSION['ans'] = code(5);
+            $img=captcha($_SESSION['ans']);  
+            */ 
             ?>
+            <img src="" id="captcha"><button onclick="captcha()">重新產生</button><br>
             <input type="text" name="ans" id="ans">
         </td>
     </tr>
@@ -35,6 +43,19 @@
 </div>
 
 <script>
+/* 畫面載入時就先產生圖形驗證碼 */
+captcha()
+/* 在chrome測試時，無法顯示img，但captcha元件src屬性確實已設定為img內容 */
+// let gblimg;  //依 chatgpt建議設定global變數
+function captcha(){  
+    $.get("./api/captcha.php",(img)=>{
+        // gblimg=img;  //將內部變數 img 傳給 global變數 gblimg
+        // console.log(gblimg); // 打印 gblimg 的值(未成功)
+        // console.log(img);    // 打印 img 的值(未成功)
+        $("#captcha").attr("src",img)
+    })
+}
+
 function login(table) {
     /* 測試ajax:顯示php程式執行前的參數值
     let ans=$("#ans").val();
