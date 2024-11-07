@@ -14,6 +14,9 @@
 </head>
 
 <body>
+    <button class="root" style='border-radius: 50%;margin:10px;background-color:greenyellow;font-size:20px;padding:20px;'>
+        <a href="../index.html" style='color:brown'>回目錄</a>
+    </button>
         <iframe name="back" style="display:none;"></iframe>
         <div id="main">
                 <div id="top">
@@ -57,8 +60,28 @@
                                 }
                                 ?>
                         </div>
-                        <marquee behavior="" direction="">
-                                年終特賣會開跑了 &nbsp; 情人節特惠活動 &nbsp;
+                        <marquee scrolldelay="120" direction="left">
+                                <!-- 年終特賣會開跑了 &nbsp; 情人節特惠活動 &nbsp; -->
+                                <?php
+                                // 讀出所有要顯示的動態消息內容
+                                $ads = $Ad->all(['sh' => 1]);
+                                // 計算資料筆數
+                                $len = count($ads);
+                                // 初始化當前指標
+                                $now = 0;
+                                // 組合成要顯示的動態消息內容字串
+                                foreach ($ads as $ad) {
+                                        echo $ad['text'];
+                                        // 最後一筆資料後加 " ..."，其他資料後加 "  /  " 做出間隔
+                                        if ($now == $len -1) {
+                                                echo '&nbsp;...';
+                                        } else {
+                                                echo '&nbsp;&nbsp;/&nbsp;&nbsp;';
+                                        }
+                                        // 指標 +1
+                                        $now++;
+                                }
+                                ?>
                         </marquee>
                 </div>
                 <div id="left" class="ct">
