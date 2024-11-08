@@ -45,13 +45,13 @@
 <script>
 /* 畫面載入時就先產生圖形驗證碼 */
 captcha()
-/* 在chrome測試時，無法顯示img，但captcha元件src屬性確實已設定為img內容 */
+/* 在chrome測試，captcha元件src屬性已設定為img內容 */
 // let gblimg;  //依 chatgpt建議設定global變數
 function captcha(){  
     $.get("./api/captcha.php",(img)=>{
         // gblimg=img;  //將內部變數 img 傳給 global變數 gblimg
-        // console.log(gblimg); // 打印 gblimg 的值(未成功)
-        // console.log(img);    // 打印 img 的值(未成功)
+        // console.log(gblimg); // 打印 gblimg 的值
+        // console.log(img);    // 打印 img 的值
         $("#captcha").attr("src",img)
     })
 }
